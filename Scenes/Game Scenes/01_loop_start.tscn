@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3joe3osepg4w"]
+
+[node name="Loop Start" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(226, 73, 226, 256, 474, 283, 630, 167, 488, 64)
