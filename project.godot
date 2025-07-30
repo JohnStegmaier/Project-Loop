@@ -11,5 +11,12 @@ config_version=5
 [application]
 
 config/name="Project Loop"
+config/version="0.0.1-SNAPSHOT"
+run/main_scene="uid://bff7j1pbmewsu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
