@@ -21,11 +21,4 @@ func restore_camera_to_zero() -> void:
 		self.position.x -= RETRACT_SPEED
 	if self.position.x < 0:
 		Logger.log_debug("Restoring position from left")
-		self.position.x += RETRACT_SPEED    
-
-	# if event is InputEventMouseMotion:
-	#     var _target = event.position - get_viewport().size * 0.5
-	#     if _target.length() < DEAD_ZONE:
-	#         self.position = Vector2(0,0)
-	#     else:
-	#         self.position = _target.normalized() * (_target.length() - DEAD_ZONE) * 0.5    
+		self.position.x += RETRACT_SPEED
