@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        platform: [Windows, Linux, MacOS]
+        platform: [Windows, Linux, macOS]
 
     container:
       image: barichello/godot-ci:${{ vars.GODOT_VERSION }}
@@ -45,8 +45,8 @@ jobs:
         cd ${{ env.PROJECT_PATH }}
         if [ "${{ matrix.platform }}" = "Windows" ]; then
           godot --headless --verbose --export-release "Windows Desktop" "build/Windows/Seconds of Eternity.exe"
-        elif ["${{ matrix.platform }}" = "MacOS"]; then
-          godot --headless --verbose --export-release "Windows Desktop" "build/MacOS/Seconds in Eternity.app"
+        elif [ "${{ matrix.platform }}" = "macOS" ]; then
+          godot --headless --verbose --export-release "macOS" "build/macOS/Seconds in Eternity.app"
         else
           godot --headless --verbose --export-release "Linux" "build/Linux/Seconds of Eternity.x86_64"
         fi
