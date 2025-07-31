@@ -11,7 +11,7 @@ const GRAVITY = 60
 const MAX_SPEED = 2000
 const FRICTION_AIR = 0.85
 const FRICTION_GROUND = 0.85
-
+const DEBUG_OBJECT = false
 
 
 var direction_vector : float
@@ -30,25 +30,18 @@ func _ready() -> void:
 	direction_vector = 0
 	direction_vector_buffer = 0
 
+
 func _physics_process(delta: float) -> void:
 	# Handle left/right input
-	direction_vector = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * MOVE_SPEED
-	# Logger.log_debug("direction_vector: %s" % [direction_vector])
-	# Logger.log_debug("Input.get_action_strength(\"move_right\"): %s" % [Input.get_action_strength("move_right")])
-	# Logger.log_debug("Input.get_action_strength(\"move_left\"): %s"	% [Input.get_action_strength("move_left")])
-
-	# Add Gravity to player
-	velocity.y += GRAVITY
-	
-	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)
-	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+	direction_vector = direction_based_on_input()
+	debug_log_movement()
+	apply_gravity_to_player()
+	clamp_player_velocity()
 
 	if is_on_floor():
-		velocity.x *= FRICTION_GROUND
-		velocity.x += direction_vector
+		set_player_velocity_with_ground_friction()
 		jump_available = true
 		direction_vector_buffer = direction_vector
-		# coyote_timer.stop()
 		if(jump_buffer):
 			jump_buffer = false
 			jump_available = false
@@ -57,12 +50,10 @@ func _physics_process(delta: float) -> void:
 		if jump_available == true:
 			get_tree().create_timer(Coyote_Time).timeout.connect(_on_coyote_timer_timeout)
 		if(direction_vector == direction_vector_buffer):
-			velocity.x *= FRICTION_GROUND
-			velocity.x += direction_vector
+			set_player_velocity_with_ground_friction()
 		else:	
 			direction_vector_buffer = 0
-			velocity.x += direction_vector/1.5
-			velocity.x *= FRICTION_AIR
+			set_player_velocity_with_air_friction()
 
 	if Input.is_action_just_pressed("jump"):
 		if jump_available:
@@ -70,11 +61,33 @@ func _physics_process(delta: float) -> void:
 			jump()	
 		else:
 			jump_buffer = true
-			Logger.log_debug("Setting jump buffer to true")		
 			get_tree().create_timer(Jump_Buffer_Time).timeout.connect(on_jump_buffer_timeout)
-	# Logger.log_debug("Velocity x: %s y: %s" % [velocity.x, velocity.y])
 	move_and_slide()
 
+func direction_based_on_input() -> float :
+	return (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * MOVE_SPEED
+
+func apply_gravity_to_player() -> void:
+	velocity.y += GRAVITY
+
+func clamp_player_velocity() -> void:
+	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)
+	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+
+func set_player_velocity_with_ground_friction() -> void:
+	velocity.x *= FRICTION_GROUND
+	velocity.x += direction_vector
+
+func set_player_velocity_with_air_friction() -> void:
+	velocity.x += direction_vector/1.5
+	velocity.x *= FRICTION_AIR
+
+func debug_log_movement() -> void :
+	if DEBUG_OBJECT:
+		Logger.log_debug("direction_vector: %s" % [direction_vector])
+		Logger.log_debug("Input.get_action_strength(\"move_right\"): %s" % [Input.get_action_strength("move_right")])
+		Logger.log_debug("Input.get_action_strength(\"move_left\"): %s"	% [Input.get_action_strength("move_left")])
+		Logger.log_debug("Velocity x: %s y: %s" % [velocity.x, velocity.y])
 
 func jump() -> void:
 	velocity.y = -JUMP_FORCE
