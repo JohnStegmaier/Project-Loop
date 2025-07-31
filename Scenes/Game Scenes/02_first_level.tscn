@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://ism3awfblpva"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_d1fgf"]
-[ext_resource type="Script" uid="uid://db62k5uafayjq" path="res://Scripts/02_first_level.gd" id="1_vmrgu"]
+[ext_resource type="Script" path="res://Scripts/02_first_level.gd" id="1_vmrgu"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="2_8f4wm"]
-[ext_resource type="Script" uid="uid://cdxs35x21emht" path="res://Scripts/player_camera.gd" id="3_vmrgu"]
+[ext_resource type="Script" path="res://Scripts/player_camera.gd" id="3_vmrgu"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="4_8f4wm"]
-[ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="6_o70yu"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="6_o70yu"]
 
 [node name="02 First Level" type="Node2D"]
 script = ExtResource("1_vmrgu")
