@@ -44,12 +44,12 @@ jobs:
         ls -lah build/
         cd ${{ env.PROJECT_PATH }}
         if [ "${{ matrix.platform }}" = "Windows" ]; then
-          godot --headless --verbose --export-release "Windows Desktop" "Seconds of Eternity.exe"
+          godot --headless --verbose --export-release "Windows Desktop" "build/Windows/Seconds of Eternity.exe"
         else
-          godot --headless --verbose --export-release "Linux" "Seconds of Eternity.x86_64"
+          godot --headless --verbose --export-release "Linux" "build/Linux/Seconds of Eternity.x86_64"
         fi
     - name: Upload ${{ matrix.platform }} artifact
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.platform }}-build
-        path: ${{ matrix.platform }}
+        path: build/${{ matrix.platform }}
