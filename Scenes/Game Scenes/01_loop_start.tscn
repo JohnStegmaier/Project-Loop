@@ -87,26 +87,6 @@ polygon = PackedVector2Array(-18, -48, -14, -20, -28, -19, -25, 29, -18, 28, -15
 [node name="Camera2D" type="Camera2D" parent="Player"]
 script = ExtResource("3_qvbyo")
 
-[node name="Control" type="Control" parent="Player/Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="Player/Camera2D/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/Camera2D/Control/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-text = "asdf"
-
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.187176, 0.187176, 0.187176, 1)
 polygon = PackedVector2Array(2759, 777, 2759, 428, 2799, 428, 2998, 447, 2996, 780, 2963, 787, 2923, 780, 2924, 493, 2801, 475, 2802, 777)
@@ -171,6 +151,28 @@ spawn_direction = "left"
 
 [node name="Spawn" parent="Doors/Door_To_Scene_2" index="1"]
 position = Vector2(-38, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "asdf"
 
 [connection signal="input_event" from="Polygon2D/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 
