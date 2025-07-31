@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3joe3osepg4w"]
+[gd_scene load_steps=11 format=3 uid="uid://c3joe3osepg4w"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_a0a4o"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="1_gbtja"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="5_06wqv"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="6_g20h4"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="7_2r5bh"]
+[ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="8_qp2oi"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v16l4"]
 viewport_path = NodePath("Bolts/3D Bolt Texture")
@@ -153,11 +154,12 @@ spawn_direction = "left"
 position = Vector2(-38, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_qp2oi")
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_right = 256.0
 offset_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -165,14 +167,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 256.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
+[node name="Score" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 256.0
 offset_bottom = 40.0
-text = "asdf"
+bbcode_enabled = true
 
 [connection signal="input_event" from="Polygon2D/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 
