@@ -1,6 +1,6 @@
 extends Camera2D
 
-const DEBUG_MODE = true
+const DEBUG_LOGS = true
 const BOARDER_ZONE = 50
 const PAN_SPEED = 1
 const RETRACT_SPEED = 3
@@ -18,8 +18,8 @@ func _physics_process(delta: float) -> void:
 
 func restore_camera_to_zero() -> void:
 	if self.position.x > 0:
-		Logger.log_debug("Restoring position from right", DEBUG_MODE)
+		Logger.log_debug("Restoring position from right", DEBUG_LOGS)
 		self.position.x -= RETRACT_SPEED
 	if self.position.x < 0:
-		Logger.log_debug("Restoring position from left", DEBUG_MODE)
+		Logger.log_debug("Restoring position from left", DEBUG_LOGS)
 		self.position.x += RETRACT_SPEED

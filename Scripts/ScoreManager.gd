@@ -1,5 +1,6 @@
 extends Node
 
+const DEBUG_LOGS = false
 signal bolt_collected_global
 
 var score = 0
@@ -7,6 +8,6 @@ var score = 0
 
 func add_score(amount := 1):
     score += amount
-    print("SCORE: ", score)
+    Logger.log_debug("SCORE: %s" %  score, DEBUG_LOGS)
     if score_label:
         score_label.text = "[center]Score: [color=yellow]%d[/color][/center]" % score
