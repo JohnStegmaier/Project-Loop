@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Logger="*res://Scripts/00_Logger.gd"
+NavigationManager="*res://Scripts/navigation_manager.gd"
 
 [display]
 

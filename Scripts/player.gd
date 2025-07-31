@@ -19,14 +19,19 @@ var jump_buffer : bool
 
 
 func _ready() -> void:
+	position.x = 50
+	position.y = 600
+	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	Jump_Buffer_Time = 0.1
 	Coyote_Time = 0.1
 	jump_buffer = false
-	position.x = 50
-	position.y = 600
 	direction_vector = 0
 	direction_vector_buffer = 0
 
+
+func _on_spawn(position: Vector2, direction: String):
+	global_position = position
+	# do something with direction here
 
 func _physics_process(delta: float) -> void:
 	direction_vector = direction_based_on_input()
