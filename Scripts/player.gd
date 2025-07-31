@@ -29,7 +29,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Handle left/right input
 	direction_vector = direction_based_on_input()
 	debug_log_movement()
 	apply_gravity_to_player()
