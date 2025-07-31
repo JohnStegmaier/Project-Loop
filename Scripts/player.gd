@@ -3,8 +3,6 @@ extends CharacterBody2D
 @export var Jump_Buffer_Time: float
 @export var Coyote_Time: float
 
-# @onready var coyote_timer: Timer = get_tree().create_timer(Coyote_Time)
-
 const MOVE_SPEED = 110
 const JUMP_FORCE = 1300
 const GRAVITY = 60
@@ -17,7 +15,6 @@ const DEBUG_OBJECT = false
 var direction_vector : float
 var direction_vector_buffer : float
 var jump_available : bool
-var jump_position : float
 var jump_buffer : bool
 
 
