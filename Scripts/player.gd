@@ -31,6 +31,9 @@ var direction_vector_buffer : float
 var jump_available : bool
 var jump_buffer : bool
 
+var is_crouching: bool = false
+
+
 
 # Dash variables
 const DASH_SPEED = 1400
@@ -67,10 +70,13 @@ func _on_spawn(position: Vector2, direction: String):
 	# do something with direction here
 
 func _physics_process(delta: float) -> void:
-	direction_vector = direction_based_on_input()
-	debug_log_movement()
-	apply_gravity_to_player()
-	clamp_player_velocity()
+	if is_crouching:
+		direction_vector = 0
+	else:
+		direction_vector = direction_based_on_input()
+		debug_log_movement()
+		apply_gravity_to_player()
+		clamp_player_velocity()
 	
 	# Dash input check
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
@@ -120,6 +126,18 @@ func _physics_process(delta: float) -> void:
 
 
 	if is_on_floor():
+		if Input.is_action_pressed("crouch"):
+			is_crouching = true
+		else:
+			is_crouching = false
+		if is_crouching:
+			$RobyV01.play("crouch")
+		elif abs(velocity.x) > 5:
+			$RobyV01.flip_h = velocity.x < 0
+			$RobyV01.play("run")
+		else:
+			$RobyV01.play("idle")
+			is_crouching = false
 		set_player_velocity_with_ground_friction()
 		jump_available = true
 		direction_vector_buffer = direction_vector
@@ -127,6 +145,7 @@ func _physics_process(delta: float) -> void:
 			jump_buffer = false
 			jump_available = false
 			jump()
+		
 	if not is_on_floor():
 		if jump_available == true:
 			var grace_time = Coyote_Time
@@ -183,6 +202,7 @@ func debug_log_movement() -> void :
 		Logger.log_debug("Velocity x: %s y: %s" % [velocity.x, velocity.y])
 
 func jump() -> void:
+	$RobyV01.play("jumping")
 	var actual_jump_force = JUMP_FORCE
 	if is_sliding:
 		actual_jump_force *= 1.8

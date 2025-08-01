@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="Script" uid="uid://bkn2npcr3yqmi" path="res://Scenes/Game Scenes/level_test.gd" id="1_ug50a"]
-[ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="2_xew73"]
+[ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="3_jirwo"]
 [ext_resource type="Texture2D" uid="uid://b03gasgc5jrkc" path="res://Assets/Tilesets/background4b.png" id="4_e00sg"]
 [ext_resource type="Texture2D" uid="uid://brqwy6c043hmu" path="res://Assets/Tilesets/1_Industrial_Tileset_1B.png" id="4_nvme5"]
 [ext_resource type="Texture2D" uid="uid://66oy4gpd1m40" path="res://Assets/Tilesets/ScifiLab/back.png" id="5_2egk5"]
@@ -1687,16 +1687,19 @@ script = ExtResource("1_r7f2y")
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
 
-[node name="RobyV01" type="Sprite2D" parent="Player"]
+[node name="RobyV01" type="AnimatedSprite2D" parent="Player"]
 light_mask = 0
 visibility_layer = 513
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_xew73")
+position = Vector2(17, -11)
+scale = Vector2(1.95, 1.95)
+sprite_frames = ExtResource("3_jirwo")
+animation = &"run"
+frame_progress = 0.883941
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 light_mask = 0
 visibility_layer = 512
-position = Vector2(0, -1)
+position = Vector2(17, -1)
 scale = Vector2(0.6, 0.6)
 polygon = PackedVector2Array(-18, -48, -14, -20, -28, -19, -25, 29, -18, 28, -15, -4, -11, -4, -14, 57, -14, 60, -4, 60, -5, 28, 2, 29, 4, 60, 14, 60, 14, -4, 17, -4, 19, 28, 27, 28, 29, -21, 12, -21, 14, -48)
 
