@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var Jump_Buffer_Time: float
 @export var Coyote_Time: float
-
+@export var BlasterShot: PackedScene
 
 const MOVE_SPEED = 155
 const JUMP_FORCE = 700
@@ -16,7 +16,6 @@ const EXTENDED_COYOTE_TIME = 0.4
 
 var is_sliding: bool = false
 var slide_timer: float = 0.0
-
 
 var sprite : AnimatedSprite2D
 
@@ -53,6 +52,13 @@ var coyote_timer_started: bool = false
 var coyote_jump_active: bool = false
 var gravity_disabled: bool = false
 
+#gun_stuff
+var is_charging: bool = false
+var charge_time: float = 0.0
+const MAX_CHARGE_TIME: float = 1
+const FIRE_RATE_MIN: float = 0.05
+const FIRE_RATE_MAX: float = 0.25
+var fire_cooldown: float = 0.0
 
 
 
@@ -64,8 +70,6 @@ func _ready() -> void:
 	jump_buffer = false
 	direction_vector = 0
 	direction_vector_buffer = 0
-	
-
 
 func _on_spawn(position: Vector2, direction: String):
 	var camera : Camera2D = get_node("Camera2D") # Adjust path if your camera has a different name
@@ -82,6 +86,33 @@ func _on_spawn(position: Vector2, direction: String):
 	# do something with direction here
 
 func _physics_process(delta: float) -> void:
+	if fire_cooldown > 0:
+		fire_cooldown -= delta
+	# Start charging
+	#if Input.is_action_just_pressed("blaster"):
+		#is_charging = true
+		#charge_time = 0.0
+#
+	## Hold to charge
+	#if is_charging and Input.is_action_pressed("blaster"):
+		#charge_time += delta
+		#charge_time = min(charge_time, MAX_CHARGE_TIME)
+#
+	## Release to fire
+	#if is_charging and Input.is_action_just_released("blaster"):
+		#is_charging = false
+		#fire_projectile(charge_time / MAX_CHARGE_TIME)
+	
+	if Input.is_action_just_pressed("blaster") and fire_cooldown <= 0:
+		var projectile_count = get_active_projectile_count()
+		if projectile_count < 2:
+			fire_cooldown = FIRE_RATE_MIN  # shorter cooldown if less than 3 projectiles
+		else:
+			fire_cooldown = FIRE_RATE_MAX  # normal cooldown (0.5)
+		fire_projectile(0.3)
+		print("Active projectiles:", get_active_projectile_count())
+
+
 	if is_crouching:
 		direction_vector = 0
 	else:
@@ -130,7 +161,6 @@ func _physics_process(delta: float) -> void:
 	if is_sliding:
 		slide_timer -= delta
 		velocity.x = sign(velocity.x) * SLIDE_SPEED  # Keep constant speed during slide
-		gravity_disabled
 		if slide_timer <= 0:
 			#FRICTION_GROUND = 0.5
 			set_player_velocity_with_ground_friction()
@@ -160,8 +190,12 @@ func _physics_process(delta: float) -> void:
 			jump_buffer = false
 			jump_available = false
 			jump()
-		
+			
 	if not is_on_floor():
+		if sprite and abs(velocity.x) > 100:
+			sprite.flip_h = velocity.x < 0  # Flip based on midair direction
+			if sprite.animation != "jumping":
+				sprite.play("jumping")  # Ensure jumping animation stays on
 		if jump_available == true:
 			var grace_time = Coyote_Time
 			if is_sliding:
@@ -182,6 +216,10 @@ func _physics_process(delta: float) -> void:
 		if is_sliding:
 			is_sliding = false
 			jump_available = false
+			jump()
+		elif is_crouching:
+			jump_available = false
+			is_crouching = false
 			jump()
 		elif jump_available:
 			jump_available = false
@@ -238,3 +276,17 @@ func on_jump_buffer_timeout() -> void:
 func _on_death_zone_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		get_tree().reload_current_scene()
+
+func fire_projectile(charge_ratio: float) -> void:
+	var projectile = BlasterShot.instantiate() as BlasterShot
+	get_parent().add_child(projectile)
+	projectile.global_position = global_position
+	var is_facing_left = sprite.flip_h
+	projectile.init(charge_ratio, is_facing_left)
+	
+func get_active_projectile_count() -> int:
+	var count = 0
+	for child in get_parent().get_children():
+		if child is BlasterShot:
+			count += 1
+	return count
