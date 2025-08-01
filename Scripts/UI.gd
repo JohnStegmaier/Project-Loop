@@ -11,7 +11,7 @@ func _ready() -> void:
 	battery_bar.value = ScoreManager.health
 	
 func _process(delta: float) -> void:
-	ScoreManager.health -= 0.00001
+	ScoreManager.health -= 0.00001 * delta
 	battery_bar.value = ScoreManager.health
 	Logger.log_debug("Battery bar value: %s" % battery_bar.value, DEBUG_LOG)
 	Logger.log_debug("ScoreManager.health value: %s" % ScoreManager.health, DEBUG_LOG)
