@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cn5n77mcy1jib"]
+[gd_scene load_steps=26 format=4 uid="uid://cn5n77mcy1jib"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="Script" uid="uid://bkn2npcr3yqmi" path="res://Scripts/level_test.gd" id="1_ug50a"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c2glfttmj42sl" path="res://Assets/2D Assets/mainlev_build.png" id="5_r3mpu"]
 [ext_resource type="Texture2D" uid="uid://bfbslbfn4cla8" path="res://Assets/2D Assets/1_Industrial_Tileset_1B.png" id="6_5ya6a"]
 [ext_resource type="Texture2D" uid="uid://b3hs8b36wn1pu" path="res://bg-wall-with-supports.png" id="6_8g7g1"]
-[ext_resource type="Script" path="res://Scripts/UI.gd" id="7_nvme5"]
+[ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="7_nvme5"]
 [ext_resource type="Texture2D" uid="uid://jqlyi84lpwbt" path="res://Assets/2D Assets/1_Industrial_Tileset_1C.png" id="7_ug50a"]
 [ext_resource type="Texture2D" uid="uid://c0jre0obv2jlg" path="res://Assets/2D Assets/1_Industrial_Tileset_1.png" id="8_jirwo"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="13_jirwo"]
