@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cn5n77mcy1jib"]
+[gd_scene load_steps=24 format=4 uid="uid://cn5n77mcy1jib"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="Script" uid="uid://bkn2npcr3yqmi" path="res://Scenes/Game Scenes/level_test.gd" id="1_ug50a"]
@@ -1677,6 +1677,8 @@ viewport_path = NodePath("3D Bolt Texture")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dxgu"]
 size = Vector2(38, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jirwo"]
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ug50a")
 metadata/_edit_lock_ = true
@@ -1927,3 +1929,12 @@ shape = SubResource("RectangleShape2D_8dxgu")
 transparent_bg = true
 
 [node name="Bolt" parent="3D Bolt Texture" instance=ExtResource("14_y8c61")]
+
+[node name="DeathZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(697, 998)
+scale = Vector2(135.891, 7.8869)
+shape = SubResource("RectangleShape2D_jirwo")
+
+[connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]

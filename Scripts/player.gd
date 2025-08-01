@@ -217,3 +217,7 @@ func _on_coyote_timer_timeout() -> void:
 func on_jump_buffer_timeout() -> void:
 	Logger.log_debug("Jump buffer has timed out")
 	jump_buffer = false
+
+func _on_death_zone_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		get_tree().reload_current_scene()
