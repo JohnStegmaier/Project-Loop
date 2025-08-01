@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cixx5dbanxem1"]
+
+[ext_resource type="Script" uid="uid://omnnwnlrok7u" path="res://Scenes/Scene Assets/blastershot.gd" id="1_75olm"]
+[ext_resource type="Texture2D" uid="uid://drkecymfofc52" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt1.png" id="1_npoyu"]
+[ext_resource type="Texture2D" uid="uid://cqmja04ftot3d" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt2.png" id="2_n38fa"]
+[ext_resource type="Texture2D" uid="uid://o11fg825rqda" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt3.png" id="3_u7vh8"]
+[ext_resource type="Texture2D" uid="uid://cdmci7kpwr818" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt4.png" id="4_tp4sh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvb8p"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2mt4"]
+animations = [{
+"frames": [{
+"duration": 0.6,
+"texture": ExtResource("1_npoyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n38fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u7vh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tp4sh")
+}],
+"loop": true,
+"name": &"blaster",
+"speed": 12.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_75olm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+scale = Vector2(0.849906, 1)
+shape = SubResource("CapsuleShape2D_kvb8p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_t2mt4")
+animation = &"blaster"
+frame_progress = 0.853722
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D"]
