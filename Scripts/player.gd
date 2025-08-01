@@ -3,13 +3,25 @@ extends CharacterBody2D
 @export var Jump_Buffer_Time: float
 @export var Coyote_Time: float
 
+
 const MOVE_SPEED = 155
 const JUMP_FORCE = 700
 const MAX_SPEED = 2000
-const FRICTION_GROUND = 0.5
+const MAX_FALL_SPEED = 700
+
 const DEBUG_OBJECT = false
+const SLIDE_SPEED = 500
+const SLIDE_DURATION = 0.17
+const EXTENDED_COYOTE_TIME = 0.4
+
+var is_sliding: bool = false
+var slide_timer: float = 0.0
+
+
+
 
 var GRAVITY = 30
+var FRICTION_GROUND = 0.5
 var FRICTION_AIR = 0.6
 var FRICTION_AIR_X = FRICTION_AIR
 var GRAVITY_X = GRAVITY
@@ -33,6 +45,12 @@ var dash_direction: int = 0
 var is_hovering: bool = false
 var hover_timer: float = 0.0
 const HOVER_DURATION = 0.1
+
+var coyote_timer_started: bool = false
+var coyote_jump_active: bool = false
+var gravity_disabled: bool = false
+
+
 
 
 func _ready() -> void:
@@ -64,7 +82,6 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2(dash_direction * DASH_SPEED, 0)
 			velocity.y = 0  # Optional: cancel vertical movement during dash
 
-
 	# Dash active
 	if is_dashing:
 		dash_timer -= delta
@@ -85,6 +102,22 @@ func _physics_process(delta: float) -> void:
 	if hover_timer <= 0:
 		is_hovering = false
 
+# Slide input (can only start slide if on floor and not sliding already)
+	if Input.is_action_just_pressed("slide") and is_on_floor() and not is_sliding and not is_dashing and not is_hovering:
+		
+		is_sliding = true
+		slide_timer = SLIDE_DURATION
+		velocity.x = sign(direction_vector) * SLIDE_SPEED
+
+	if is_sliding:
+		slide_timer -= delta
+		velocity.x = sign(velocity.x) * SLIDE_SPEED  # Keep constant speed during slide
+		gravity_disabled
+		if slide_timer <= 0:
+			#FRICTION_GROUND = 0.5
+			set_player_velocity_with_ground_friction()
+			is_sliding = false
+
 
 	if is_on_floor():
 		set_player_velocity_with_ground_friction()
@@ -96,7 +129,11 @@ func _physics_process(delta: float) -> void:
 			jump()
 	if not is_on_floor():
 		if jump_available == true:
-			get_tree().create_timer(Coyote_Time).timeout.connect(_on_coyote_timer_timeout)
+			var grace_time = Coyote_Time
+			if is_sliding:
+				grace_time = EXTENDED_COYOTE_TIME
+			get_tree().create_timer(grace_time).timeout.connect(_on_coyote_timer_timeout)
+			velocity.y = 0
 		if(direction_vector == direction_vector_buffer):
 			set_player_velocity_with_ground_friction()
 		else:	
@@ -108,7 +145,11 @@ func _physics_process(delta: float) -> void:
 		dash_cooldown_timer -= delta
 
 	if Input.is_action_just_pressed("jump"):
-		if jump_available:
+		if is_sliding:
+			is_sliding = false
+			jump_available = false
+			jump()
+		elif jump_available:
 			jump_available = false
 			jump()	
 		else:
@@ -123,8 +164,8 @@ func apply_gravity_to_player() -> void:
 	velocity.y += GRAVITY
 
 func clamp_player_velocity() -> void:
-	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_SPEED)
-	#velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+	velocity.y = clamp(velocity.y, -MAX_SPEED, MAX_FALL_SPEED)
+	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 
 func set_player_velocity_with_ground_friction() -> void:
 	velocity.x *= FRICTION_GROUND
@@ -142,10 +183,16 @@ func debug_log_movement() -> void :
 		Logger.log_debug("Velocity x: %s y: %s" % [velocity.x, velocity.y])
 
 func jump() -> void:
-	velocity.y = -JUMP_FORCE
+	var actual_jump_force = JUMP_FORCE
+	if is_sliding:
+		actual_jump_force *= 1.8
+		velocity.y = -actual_jump_force
+	else:
+		velocity.y = -JUMP_FORCE
 
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
+	velocity.y += GRAVITY
 
 func on_jump_buffer_timeout() -> void:
 	Logger.log_debug("Jump buffer has timed out")
