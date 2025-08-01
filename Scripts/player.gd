@@ -18,7 +18,7 @@ var is_sliding: bool = false
 var slide_timer: float = 0.0
 
 
-
+var sprite : AnimatedSprite2D
 
 var GRAVITY = 30
 var FRICTION_GROUND = 0.5
@@ -58,15 +58,27 @@ var gravity_disabled: bool = false
 
 func _ready() -> void:
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
+	sprite = get_node("Cyborg")
 	Jump_Buffer_Time = 0.1
 	Coyote_Time = 0.1
 	jump_buffer = false
 	direction_vector = 0
 	direction_vector_buffer = 0
+	
 
 
 func _on_spawn(position: Vector2, direction: String):
+	var camera : Camera2D = get_node("Camera2D") # Adjust path if your camera has a different name
+
+	if camera:
+		camera.position_smoothing_enabled = false
+
 	global_position = position
+
+	# Re-enable smoothing after one frame
+	if camera:
+		await get_tree().process_frame
+		camera.position_smoothing_enabled = true
 	# do something with direction here
 
 func _physics_process(delta: float) -> void:
@@ -131,12 +143,15 @@ func _physics_process(delta: float) -> void:
 		else:
 			is_crouching = false
 		if is_crouching:
-			$RobyV01.play("crouch")
+			if sprite:
+				sprite.play("crouch")
 		elif abs(velocity.x) > 5:
-			$RobyV01.flip_h = velocity.x < 0
-			$RobyV01.play("run")
+			if sprite:
+				sprite.flip_h = velocity.x < 0
+				sprite.play("run")
 		else:
-			$RobyV01.play("idle")
+			if sprite:
+				sprite.play("idle")
 			is_crouching = false
 		set_player_velocity_with_ground_friction()
 		jump_available = true
@@ -200,9 +215,11 @@ func debug_log_movement() -> void :
 		Logger.log_debug("Input.get_action_strength(\"move_right\"): %s" % [Input.get_action_strength("move_right")])
 		Logger.log_debug("Input.get_action_strength(\"move_left\"): %s"	% [Input.get_action_strength("move_left")])
 		Logger.log_debug("Velocity x: %s y: %s" % [velocity.x, velocity.y])
+		Logger.log_debug("Hello World")
 
 func jump() -> void:
-	$RobyV01.play("jumping")
+	if sprite:
+		sprite.play("jumping")
 	var actual_jump_force = JUMP_FORCE
 	if is_sliding:
 		actual_jump_force *= 1.8
