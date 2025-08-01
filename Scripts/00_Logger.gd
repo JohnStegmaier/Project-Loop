@@ -5,8 +5,8 @@ enum Level { DEBUG, INFO, WARN, ERROR, OFF }
 
 var current_level: Level = Level.DEBUG
 
-func log_debug(msg: String) -> void:
-	if current_level <= Level.DEBUG:
+func log_debug(msg: String, class_level_debug_enabled: bool = true) -> void:
+	if current_level <= Level.DEBUG && class_level_debug_enabled:
 		print("[DEBUG]: ", msg)
 
 func log_info(msg: String) -> void:

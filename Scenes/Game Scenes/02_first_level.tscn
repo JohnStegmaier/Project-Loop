@@ -1,11 +1,72 @@
-[gd_scene load_steps=7 format=3 uid="uid://ism3awfblpva"]
+[gd_scene load_steps=17 format=3 uid="uid://ism3awfblpva"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_d1fgf"]
 [ext_resource type="Script" uid="uid://db62k5uafayjq" path="res://Scripts/02_first_level.gd" id="1_vmrgu"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="2_8f4wm"]
-[ext_resource type="Script" uid="uid://cdxs35x21emht" path="res://Scripts/player_camera.gd" id="3_vmrgu"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="4_8f4wm"]
+[ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="6_4pfj8"]
 [ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="6_o70yu"]
+[ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="7_2ccdv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pfj8"]
+
+[sub_resource type="Curve2D" id="Curve2D_vmrgu"]
+
+[sub_resource type="Curve2D" id="Curve2D_o70yu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 800, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_4pfj8"]
+resource_name = "Moving Platform"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-1.5, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2ccdv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqjww"]
+_data = {
+&"Moving Platform": SubResource("Animation_4pfj8"),
+&"RESET": SubResource("Animation_2ccdv")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_4pfj8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -800)
+}
+point_count = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aqjww"]
+viewport_path = NodePath("Bolts/3D Bolt Texture")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0w4n"]
+size = Vector2(38, 50)
 
 [node name="02 First Level" type="Node2D"]
 script = ExtResource("1_vmrgu")
@@ -14,22 +75,29 @@ script = ExtResource("1_vmrgu")
 position = Vector2(395, 610)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
-polygon = PackedVector2Array(1, 3, 165, 3, 162, 26, 6, 25)
+polygon = PackedVector2Array(1, 3, 165, 3, 176, 24, -8, 24)
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
-polygon = PackedVector2Array(1, 3, 6, 25, 162, 26, 165, 3)
+color = Color(0.850557, 0.467484, 0.121302, 1)
+polygon = PackedVector2Array(1, 3, -8, 24, 176, 24, 165, 3)
 
 [node name="Ground2" type="StaticBody2D" parent="."]
-position = Vector2(693, 351)
+position = Vector2(1616, 391)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground2"]
-polygon = PackedVector2Array(1, 3, 165, 3, 162, 26, 6, 25)
+polygon = PackedVector2Array(160, 8, 160, 16, 152, 24, 0, 24, -8, 16, -8, 8, 0, 0, 152, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground2"]
-polygon = PackedVector2Array(1, 3, 6, 25, 162, 26, 165, 3)
+material = SubResource("CanvasItemMaterial_4pfj8")
+color = Color(0.396889, 0.396889, 0.396889, 1)
+polygon = PackedVector2Array(0, 0, -8, 8, -8, 16, 0, 24, 152, 24, 160, 16, 160, 8, 152, 0)
+uv = PackedVector2Array(0, 0, -8, 8, -8, 16, 0, 24, 8, 24, 16, 16, 16, 8, 8, 0)
+
+[node name="Path2D" type="Path2D" parent="Ground2"]
+curve = SubResource("Curve2D_vmrgu")
 
 [node name="Ground4" type="StaticBody2D" parent="."]
-position = Vector2(999, 447)
+position = Vector2(1854, 285)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground4"]
 polygon = PackedVector2Array(1, 3, 165, 3, 162, 26, 6, 25)
@@ -46,6 +114,17 @@ polygon = PackedVector2Array(1, 3, 165, 3, 162, 26, 6, 25)
 
 [node name="Polygon2D" type="Polygon2D" parent="LOOONG GRND"]
 polygon = PackedVector2Array(1, 3, 6, 25, 162, 26, 165, 3)
+
+[node name="LOOONG GRND IN SKY" type="StaticBody2D" parent="."]
+position = Vector2(387, -507)
+scale = Vector2(10, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LOOONG GRND IN SKY"]
+polygon = PackedVector2Array(0, 0, 168, 0, 160.1, 24, 8, 24)
+
+[node name="Polygon2D" type="Polygon2D" parent="LOOONG GRND IN SKY"]
+color = Color(1, 1, 1, 0.572549)
+polygon = PackedVector2Array(-3.09944e-06, -2.38419e-07, 7.99998, 24, 160, 24, 168, 2.38419e-07)
 
 [node name="LOOONG GRND3" type="StaticBody2D" parent="."]
 position = Vector2(-1827, 775)
@@ -78,7 +157,12 @@ texture = ExtResource("2_8f4wm")
 polygon = PackedVector2Array(-18, -48, -14, -20, -28, -19, -25, 29, -18, 28, -15, -4, -11, -4, -14, 57, -14, 60, -4, 60, -5, 28, 2, 29, 4, 60, 14, 60, 14, -4, 17, -4, 19, 28, 27, 28, 29, -21, 12, -21, 14, -48)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-script = ExtResource("3_vmrgu")
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_horizontal_offset = 0.3
+drag_left_margin = 0.1
+drag_right_margin = 0.1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(1213, 9)
@@ -129,5 +213,312 @@ layout_mode = 0
 offset_right = 256.0
 offset_bottom = 40.0
 bbcode_enabled = true
+
+[node name="Moving Platform" type="Path2D" parent="."]
+position = Vector2(631, 562)
+curve = SubResource("Curve2D_o70yu")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving Platform"]
+position = Vector2(799.577, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Moving Platform/AnimatableBody2D"]
+polygon = PackedVector2Array(160, 8, 160, 16, 152, 24, 0, 24, -8, 16, -8, 8, 0, 0, 152, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Moving Platform/AnimatableBody2D"]
+material = SubResource("CanvasItemMaterial_4pfj8")
+color = Color(0.396889, 0.396889, 0.396889, 1)
+polygon = PackedVector2Array(0, 0, -8, 8, -8, 16, 0, 24, 152, 24, 160, 16, 160, 8, 152, 0)
+uv = PackedVector2Array(0, 0, -8, 8, -8, 16, 0, 24, 8, 24, 16, 16, 16, 8, 8, 0)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Moving Platform"]
+position = Vector2(800, 0)
+progress = 800.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Moving Platform/PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform"]
+libraries = {
+&"": SubResource("AnimationLibrary_aqjww")
+}
+autoplay = "Moving Platform"
+
+[node name="Moving Platform2" type="Path2D" parent="."]
+position = Vector2(2165, 292)
+curve = SubResource("Curve2D_4pfj8")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving Platform2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Moving Platform2/AnimatableBody2D"]
+polygon = PackedVector2Array(160, 8, 160, 16, 152, 24, 0, 24, -8, 16, -8, 8, 0, 0, 152, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Moving Platform2/AnimatableBody2D"]
+material = SubResource("CanvasItemMaterial_4pfj8")
+color = Color(0.396889, 0.396889, 0.396889, 1)
+polygon = PackedVector2Array(0, 0, -8, 8, -8, 16, 0, 24, 152, 24, 160, 16, 160, 8, 152, 0)
+uv = PackedVector2Array(0, 0, -8, 8, -8, 16, 0, 24, 8, 24, 16, 16, 16, 8, 8, 0)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Moving Platform2"]
+position = Vector2(0, -800)
+progress = 800.0
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Moving Platform2/PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_aqjww")
+}
+autoplay = "Moving Platform"
+
+[node name="Bolts" type="Node2D" parent="."]
+
+[node name="Bolt 1" type="Area2D" parent="Bolts"]
+position = Vector2(472, 571)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 1"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 1"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="3D Bolt Texture" type="SubViewport" parent="Bolts"]
+transparent_bg = true
+
+[node name="Bolt" parent="Bolts/3D Bolt Texture" instance=ExtResource("7_2ccdv")]
+
+[node name="Bolt 2" type="Area2D" parent="Bolts"]
+position = Vector2(650, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 2"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 2"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 3" type="Area2D" parent="Bolts"]
+position = Vector2(750, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 3"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 3"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 4" type="Area2D" parent="Bolts"]
+position = Vector2(850, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 4"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 4"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 5" type="Area2D" parent="Bolts"]
+position = Vector2(950, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 5"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 5"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 6" type="Area2D" parent="Bolts"]
+position = Vector2(1050, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 6"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 6"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 7" type="Area2D" parent="Bolts"]
+position = Vector2(1150, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 7"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 7"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 8" type="Area2D" parent="Bolts"]
+position = Vector2(1250, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 8"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 8"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 9" type="Area2D" parent="Bolts"]
+position = Vector2(1350, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 9"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 9"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 10" type="Area2D" parent="Bolts"]
+position = Vector2(1450, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 10"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 10"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 11" type="Area2D" parent="Bolts"]
+position = Vector2(1550, 500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 11"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 11"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 12" type="Area2D" parent="Bolts"]
+position = Vector2(1688, 317)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 12"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 12"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 13" type="Area2D" parent="Bolts"]
+position = Vector2(1936, 216)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 13"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 13"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 14" type="Area2D" parent="Bolts"]
+position = Vector2(2240, 200)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 14"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 14"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 15" type="Area2D" parent="Bolts"]
+position = Vector2(2240, 100)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 15"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 15"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 16" type="Area2D" parent="Bolts"]
+position = Vector2(2240, 0)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 16"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 16"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 17" type="Area2D" parent="Bolts"]
+position = Vector2(2240, -100)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 17"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 17"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 18" type="Area2D" parent="Bolts"]
+position = Vector2(2240, -200)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 18"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 18"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 19" type="Area2D" parent="Bolts"]
+position = Vector2(2240, -300)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 19"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 19"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 20" type="Area2D" parent="Bolts"]
+position = Vector2(2240, -400)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 20"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 20"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 21" type="Area2D" parent="Bolts"]
+position = Vector2(2240, -500)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 21"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 21"]
+shape = SubResource("RectangleShape2D_g0w4n")
+
+[node name="Bolt 22" type="Area2D" parent="Bolts"]
+position = Vector2(2240, -600)
+script = ExtResource("6_4pfj8")
+
+[node name="Bolt" type="Sprite2D" parent="Bolts/Bolt 22"]
+scale = Vector2(0.1, 0.1)
+texture = SubResource("ViewportTexture_aqjww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 22"]
+shape = SubResource("RectangleShape2D_g0w4n")
 
 [editable path="Doors/Door_To_Scene_1"]
