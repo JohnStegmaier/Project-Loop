@@ -189,10 +189,10 @@ destination_door_tag = "To_Scene_2"
 spawn_direction = "right"
 
 [node name="CollisionShape2D" parent="Doors/Door_To_Scene_1" index="0"]
-position = Vector2(-43, -91)
+position = Vector2(-40, -36)
 
 [node name="Spawn" parent="Doors/Door_To_Scene_1" index="1"]
-position = Vector2(69, -1)
+position = Vector2(11, -20)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("6_o70yu")
