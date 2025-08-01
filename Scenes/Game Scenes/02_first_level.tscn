@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ism3awfblpva"]
+[gd_scene load_steps=18 format=3 uid="uid://ism3awfblpva"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_d1fgf"]
 [ext_resource type="Script" uid="uid://db62k5uafayjq" path="res://Scripts/02_first_level.gd" id="1_vmrgu"]
@@ -11,6 +11,9 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pfj8"]
 
 [sub_resource type="Curve2D" id="Curve2D_vmrgu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pfj8"]
+bg_color = Color(0.0909465, 0.726227, 0, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_o70yu"]
 _data = {
@@ -238,18 +241,20 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="Battery" type="ProgressBar" parent="CanvasLayer/Control/LifeBarPanel"]
+layout_direction = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -2.0
+offset_left = -285.0
 offset_top = -13.5
-offset_right = 2.0
+offset_right = 285.0
 offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_4pfj8")
 step = 0.001
 value = 100.0
 
