@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba3gs7m3ofuh8"
-path="res://.godot/imported/Objects1.png-925d94a3f591ae69789dde9718e0ee1d.ctex"
+uid="uid://no5awperc2fv"
+path="res://.godot/imported/DecoTiles.png-c3c445660b02ed3f58aef068f33bfcf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Raws/Objects1.png"
-dest_files=["res://.godot/imported/Objects1.png-925d94a3f591ae69789dde9718e0ee1d.ctex"]
+source_file="res://Assets/Tilesets/DecoTiles.png"
+dest_files=["res://.godot/imported/DecoTiles.png-c3c445660b02ed3f58aef068f33bfcf2.ctex"]
 
 [params]
 
