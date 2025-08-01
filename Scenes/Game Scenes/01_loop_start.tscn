@@ -1050,7 +1050,7 @@ offset_left = -600.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/LifeBarPanel"]
+[node name="Battery" type="ProgressBar" parent="CanvasLayer/Control/LifeBarPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
