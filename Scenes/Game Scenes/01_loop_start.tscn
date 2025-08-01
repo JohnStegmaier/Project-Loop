@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3joe3osepg4w"]
+[gd_scene load_steps=10 format=3 uid="uid://c3joe3osepg4w"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_a0a4o"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="1_gbtja"]
-[ext_resource type="Script" path="res://Scripts/01_loop_start.gd" id="1_q8vuo"]
-[ext_resource type="Script" path="res://Scripts/player_camera.gd" id="3_qvbyo"]
-[ext_resource type="Script" path="res://Scripts/Bolt.gd" id="5_06wqv"]
+
+[ext_resource type="Script" uid="uid://esty7ybnc0p5" path="res://Scripts/01_loop_start.gd" id="1_q8vuo"]
+[ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="5_06wqv"]
+
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="6_g20h4"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="7_2r5bh"]
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="8_qp2oi"]
@@ -86,7 +87,12 @@ texture = ExtResource("1_gbtja")
 polygon = PackedVector2Array(-18, -48, -14, -20, -28, -19, -25, 29, -18, 28, -15, -4, -11, -4, -14, 57, -14, 60, -4, 60, -5, 28, 2, 29, 4, 60, 14, 60, 14, -4, 17, -4, 19, 28, 27, 28, 29, -21, 12, -21, 14, -48)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-script = ExtResource("3_qvbyo")
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_horizontal_offset = 0.3
+drag_left_margin = 0.1
+drag_right_margin = 0.1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.187176, 0.187176, 0.187176, 1)
