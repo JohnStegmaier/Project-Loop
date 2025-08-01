@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_d1fgf"]
 [ext_resource type="Script" path="res://Scripts/02_first_level.gd" id="1_vmrgu"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="2_8f4wm"]
-
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="4_8f4wm"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="6_4pfj8"]
-[ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="6_o70yu"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="6_o70yu"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="7_2ccdv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pfj8"]
@@ -220,7 +219,7 @@ position = Vector2(631, 562)
 curve = SubResource("Curve2D_o70yu")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving Platform"]
-position = Vector2(799.577, 0)
+position = Vector2(800, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Moving Platform/AnimatableBody2D"]
 polygon = PackedVector2Array(160, 8, 160, 16, 152, 24, 0, 24, -8, 16, -8, 8, 0, 0, 152, 0)
@@ -249,6 +248,7 @@ position = Vector2(2165, 292)
 curve = SubResource("Curve2D_4pfj8")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving Platform2"]
+position = Vector2(0, -800)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Moving Platform2/AnimatableBody2D"]
 polygon = PackedVector2Array(160, 8, 160, 16, 152, 24, 0, 24, -8, 16, -8, 8, 0, 0, 152, 0)

@@ -19,8 +19,6 @@ var jump_buffer : bool
 
 
 func _ready() -> void:
-	position.x = 50
-	position.y = 600
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	Jump_Buffer_Time = 0.1
 	Coyote_Time = 0.1

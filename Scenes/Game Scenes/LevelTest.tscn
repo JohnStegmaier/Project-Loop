@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://cn5n77mcy1jib"]
+[gd_scene load_steps=19 format=4 uid="uid://cn5n77mcy1jib"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="Script" uid="uid://bkn2npcr3yqmi" path="res://Scenes/Game Scenes/level_test.gd" id="1_ug50a"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="2_xew73"]
-[ext_resource type="Script" path="res://Scripts/player_camera.gd" id="3_568g5"]
 [ext_resource type="Texture2D" uid="uid://b03gasgc5jrkc" path="res://Assets/Asset Raws/background4b.png" id="4_e00sg"]
 [ext_resource type="Texture2D" uid="uid://brqwy6c043hmu" path="res://Assets/Asset Raws/1_Industrial_Tileset_1B.png" id="4_nvme5"]
 [ext_resource type="Texture2D" uid="uid://66oy4gpd1m40" path="res://Assets/Asset Raws/ScifiLab/back.png" id="5_2egk5"]
@@ -1675,7 +1674,7 @@ script = ExtResource("1_ug50a")
 metadata/_edit_lock_ = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-178, 632)
+position = Vector2(-420, 759)
 script = ExtResource("1_r7f2y")
 
 [node name="Marker2D" type="Marker2D" parent="Player"]
@@ -1702,7 +1701,6 @@ limit_bottom = 895
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_vertical_offset = -0.81
-script = ExtResource("3_568g5")
 
 [node name="Surfaces" type="TileMapLayer" parent="."]
 light_mask = 2
