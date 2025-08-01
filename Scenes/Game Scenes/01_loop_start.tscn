@@ -23,6 +23,10 @@ size = Vector2(38, 50)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frnmx"]
 bg_color = Color(0.0909465, 0.726227, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r33d5"]
 texture = ExtResource("11_gfa55")

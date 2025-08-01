@@ -1673,6 +1673,10 @@ sources/4 = SubResource("TileSetAtlasSource_8dxgu")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jirwo"]
 bg_color = Color(0.0909465, 0.726227, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jirwo"]
 viewport_path = NodePath("3D Bolt Texture")
