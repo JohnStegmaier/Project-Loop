@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://no5awperc2fv"
-path="res://.godot/imported/DecoTiles.png-6418d09c186974078a447bd7db7d5977.ctex"
+uid="uid://ctfp7o13qavy7"
+path="res://.godot/imported/Tileset3.png-ffe089513e503bc51562b295682ff52b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Raws/DecoTiles.png"
-dest_files=["res://.godot/imported/DecoTiles.png-6418d09c186974078a447bd7db7d5977.ctex"]
+source_file="res://Assets/Tilesets/Tileset3.png"
+dest_files=["res://.godot/imported/Tileset3.png-ffe089513e503bc51562b295682ff52b.ctex"]
 
 [params]
 
