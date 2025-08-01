@@ -169,12 +169,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="RichTextLabel" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 40.0
 bbcode_enabled = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="input_event" from="Polygon2D/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 

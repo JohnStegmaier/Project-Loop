@@ -3,12 +3,12 @@ extends CharacterBody2D
 @export var Jump_Buffer_Time: float
 @export var Coyote_Time: float
 
-const MOVE_SPEED = 110
-const JUMP_FORCE = 1300
-const GRAVITY = 60
+const MOVE_SPEED = 155
+const JUMP_FORCE = 700
+const GRAVITY = 30
 const MAX_SPEED = 2000
-const FRICTION_AIR = 0.85
-const FRICTION_GROUND = 0.85
+const FRICTION_AIR = 0.6
+const FRICTION_GROUND = 0.5
 const DEBUG_OBJECT = false
 
 
@@ -80,7 +80,7 @@ func set_player_velocity_with_ground_friction() -> void:
 	velocity.x += direction_vector
 
 func set_player_velocity_with_air_friction() -> void:
-	velocity.x += direction_vector/1.5
+	velocity.x += direction_vector
 	velocity.x *= FRICTION_AIR
 
 func debug_log_movement() -> void :
