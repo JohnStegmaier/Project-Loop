@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ism3awfblpva"]
+[gd_scene load_steps=18 format=3 uid="uid://ism3awfblpva"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_d1fgf"]
 [ext_resource type="Script" uid="uid://db62k5uafayjq" path="res://Scripts/02_first_level.gd" id="1_vmrgu"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="4_8f4wm"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="6_4pfj8"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="7_2ccdv"]
-[ext_resource type="PackedScene" uid="uid://dp8tkes47vcwt" path="res://Scenes/Scene Assets/User Interface.tscn" id="7_4pfj8"]
+[ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="7_4pfj8"]
+[ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="8_2ccdv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4pfj8"]
 
@@ -503,5 +504,8 @@ texture = SubResource("ViewportTexture_aqjww")
 shape = SubResource("RectangleShape2D_g0w4n")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_4pfj8")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_2ccdv")]
+visible = false
 
 [editable path="Doors/Door_To_Scene_1"]
