@@ -1691,7 +1691,7 @@ size = Vector2(38, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g414q"]
 size = Vector2(1.77364, 26.2927)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource("1_ug50a")
 metadata/_edit_lock_ = true
 

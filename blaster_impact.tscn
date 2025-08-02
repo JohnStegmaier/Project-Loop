@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bocqr6kt4orsn"]
+
+[ext_resource type="Script" uid="uid://ck13l3thhfcr6" path="res://blaster_impact.gd" id="1_gjnwx"]
+
+[sub_resource type="Curve" id="Curve_rv12m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gjnwx"]
+curve = SubResource("Curve_rv12m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xcu27"]
+particle_flag_disable_z = true
+initial_velocity_max = 134.41
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_gjnwx")
+
+[node name="blaster_impact" type="Node2D"]
+script = ExtResource("1_gjnwx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.53
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xcu27")
