@@ -40,6 +40,8 @@ const DASH_SPEED = 1400
 const DASH_DURATION = 0.08
 const DASH_COOLDOWN = 0.5
 
+
+
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var is_dashing: bool = false
@@ -129,6 +131,8 @@ func _physics_process(delta: float) -> void:
 	# Dash input check
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
 		if direction_vector != 0:
+			
+			
 			is_dashing = true
 			dash_timer = DASH_DURATION
 			dash_cooldown_timer = DASH_COOLDOWN
