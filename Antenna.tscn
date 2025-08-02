@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fi40h4amgw8f"]
+
+[ext_resource type="Texture2D" path="res://Assets/2D Assets/Props/antenna.png" id="1_micuy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_micuy")

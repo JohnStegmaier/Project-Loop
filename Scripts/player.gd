@@ -109,8 +109,13 @@ func _physics_process(delta: float) -> void:
 			fire_cooldown = FIRE_RATE_MIN  # shorter cooldown if less than 3 projectiles
 		else:
 			fire_cooldown = FIRE_RATE_MAX  # normal cooldown (0.5)
+<<<<<<< Updated upstream
 		fire_projectile(0.3)
 		print("Active projectiles:", get_active_projectile_count())
+=======
+		fire_projectile(0.5)
+		Logger.log_debug("Active projectiles:", get_active_projectile_count())
+>>>>>>> Stashed changes
 
 
 	if is_crouching:

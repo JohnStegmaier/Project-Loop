@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cixx5dbanxem1"]
+[gd_scene load_steps=11 format=3 uid="uid://cixx5dbanxem1"]
 
 [ext_resource type="Script" uid="uid://omnnwnlrok7u" path="res://Scenes/Scene Assets/blastershot.gd" id="1_75olm"]
 [ext_resource type="Texture2D" uid="uid://drkecymfofc52" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt1.png" id="1_npoyu"]
@@ -29,20 +29,40 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Curve" id="Curve_h3wbl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gjnwx"]
+curve = SubResource("Curve_h3wbl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5v4d"]
+particle_flag_disable_z = true
+initial_velocity_max = 134.41
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_gjnwx")
+
+[node name="Area2D" type="Area2D"]
 script = ExtResource("1_75olm")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -5.12227e-09)
+rotation = 1.57547
 scale = Vector2(0.849906, 1)
 shape = SubResource("CapsuleShape2D_kvb8p")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_t2mt4")
 animation = &"blaster"
-frame_progress = 0.853722
+frame_progress = 0.610474
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="blaster_impact" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.53
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_w5v4d")
