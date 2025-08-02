@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp8tkes47vcwt"]
+
+[ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="1_6opjh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frnmx"]
+bg_color = Color(0.0909465, 0.726227, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_6opjh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 40.0
+
+[node name="Score" type="RichTextLabel" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -20.0
+offset_right = 128.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="LifeBarPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -600.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Battery" type="ProgressBar" parent="Control/LifeBarPanel"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -13.5
+offset_right = 285.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_frnmx")
+step = 0.001
+value = 100.0
