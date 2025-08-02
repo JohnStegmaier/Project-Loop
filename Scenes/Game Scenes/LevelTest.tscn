@@ -1691,6 +1691,7 @@ size = Vector2(38, 50)
 size = Vector2(1.77364, 26.2927)
 
 [node name="Node2D" type="Node2D"]
+
 metadata/_edit_lock_ = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
