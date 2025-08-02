@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			fire_cooldown = FIRE_RATE_MAX  # normal cooldown (0.5)
 		fire_projectile(0.5)
-		print("Active projectiles:", get_active_projectile_count())
+		Logger.log_debug("Active projectiles: %s" % get_active_projectile_count(), DEBUG_OBJECT)
 
 
 	if is_crouching:
