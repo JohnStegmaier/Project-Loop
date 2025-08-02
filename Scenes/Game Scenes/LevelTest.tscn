@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=4 uid="uid://cn5n77mcy1jib"]
 
-[ext_resource type="Script" uid="uid://c5cnabpd30qgo" path="res://Scripts/level_test.gd" id="1_76pdq"]
+[ext_resource type="Script" path="res://Scripts/level_test.gd" id="1_76pdq"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="3_jirwo"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="3_y8c61"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/destructible_object.gd" id="15_g414q"]
 [ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="16_8dxgu"]
 [ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="16_g414q"]
-[ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="18_vbmf7"]
+[ext_resource type="PackedScene" path="res://Scenes/Game Scenes/pause_menu.tscn" id="18_vbmf7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8c61"]
 texture = ExtResource("4_nvme5")

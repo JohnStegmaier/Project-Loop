@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var BlasterShot: PackedScene
 
 const MOVE_SPEED = 155
-const JUMP_FORCE = 700
+const JUMP_FORCE = 650
 const MAX_SPEED = 2000
-const MAX_FALL_SPEED = 700
+const MAX_FALL_SPEED = 500
 
 const DEBUG_OBJECT = false
 const SLIDE_SPEED = 500

@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bfbslbfn4cla8" path="res://Assets/2D Assets/1_Industrial_Tileset_1B.png" id="12_doqbh"]
 [ext_resource type="Texture2D" uid="uid://jqlyi84lpwbt" path="res://Assets/2D Assets/1_Industrial_Tileset_1C.png" id="13_s7oi5"]
 [ext_resource type="Texture2D" uid="uid://o41sklbe1op8" path="res://Assets/Tilesets/spikes.png" id="14_frnmx"]
-[ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="15_0xv7n"]
+[ext_resource type="PackedScene" path="res://Scenes/Game Scenes/pause_menu.tscn" id="15_0xv7n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v16l4"]
 viewport_path = NodePath("Bolts/3D Bolt Texture")
