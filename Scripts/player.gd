@@ -14,6 +14,7 @@ const SLIDE_SPEED = 500
 const SLIDE_DURATION = 0.17
 const EXTENDED_COYOTE_TIME = 0.4
 const VARIABLE_JUMP_TIME = 2
+const JUMP_CUT_MULTIPLIER = 100
 
 var is_sliding: bool = false
 var slide_timer: float = 0.0
@@ -279,9 +280,7 @@ func _on_coyote_timer_timeout() -> void:
 	velocity.y += GRAVITY
 
 func cut_jump_short () -> void:
-	Logger.log_debug("Jump cut short at %s, Velocity y:%s" % [timer.time_left, velocity.y])
-	velocity.y += timer.time_left * 100
-	Logger.log_debug("Velocity y is now:%s" % velocity.y)
+	velocity.y += timer.time_left * JUMP_CUT_MULTIPLIER
 	timer.time_left = 0
 	
 func on_jump_buffer_timeout() -> void:
