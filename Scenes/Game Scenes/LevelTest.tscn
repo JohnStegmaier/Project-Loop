@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cn5n77mcy1jib"]
+[gd_scene load_steps=26 format=4 uid="uid://cn5n77mcy1jib"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="3_jirwo"]
@@ -1684,7 +1684,6 @@ size = Vector2(38, 50)
 size = Vector2(1.77364, 26.2927)
 
 [node name="Node2D" type="Node2D"]
-
 metadata/_edit_lock_ = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
