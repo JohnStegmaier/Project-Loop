@@ -35,7 +35,7 @@ script = ExtResource("1_75olm")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-rotation = 1.5708
+rotation = 1.57547
 scale = Vector2(0.849906, 1)
 shape = SubResource("CapsuleShape2D_kvb8p")
 
@@ -43,6 +43,6 @@ shape = SubResource("CapsuleShape2D_kvb8p")
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_t2mt4")
 animation = &"blaster"
-frame_progress = 0.853722
+frame_progress = 0.66105
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2D"]

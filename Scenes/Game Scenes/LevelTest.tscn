@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cn5n77mcy1jib"]
+[gd_scene load_steps=28 format=4 uid="uid://cn5n77mcy1jib"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
 [ext_resource type="Script" uid="uid://bkn2npcr3yqmi" path="res://Scripts/level_test.gd" id="1_ug50a"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c0jre0obv2jlg" path="res://Assets/2D Assets/1_Industrial_Tileset_1.png" id="8_jirwo"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="13_jirwo"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="14_y8c61"]
+[ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="16_g414q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xew73"]
 texture = ExtResource("4_nvme5")
@@ -1687,6 +1688,9 @@ size = Vector2(38, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jirwo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g414q"]
+size = Vector2(1.77364, 26.2927)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ug50a")
 metadata/_edit_lock_ = true
@@ -1979,5 +1983,17 @@ transparent_bg = true
 position = Vector2(697, 998)
 scale = Vector2(135.891, 7.8869)
 shape = SubResource("RectangleShape2D_jirwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(164, 693)
+scale = Vector2(2.15343, 2.15343)
+texture = ExtResource("16_g414q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+scale = Vector2(3.94673, 3.57513)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0.633453, 0)
+shape = SubResource("RectangleShape2D_g414q")
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]

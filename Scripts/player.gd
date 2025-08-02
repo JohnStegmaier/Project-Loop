@@ -32,8 +32,6 @@ var jump_buffer : bool
 
 var is_crouching: bool = false
 
-
-
 # Dash variables
 const DASH_SPEED = 1400
 const DASH_DURATION = 0.08
@@ -55,11 +53,11 @@ var gravity_disabled: bool = false
 #gun_stuff
 var is_charging: bool = false
 var charge_time: float = 0.0
-const MAX_CHARGE_TIME: float = 1
-const FIRE_RATE_MIN: float = 0.05
-const FIRE_RATE_MAX: float = 0.25
+const MAX_CHARGE_TIME: float = 1.5
+const FIRE_RATE_MIN: float = 0.1
+const FIRE_RATE_MAX: float = 0.35
 var fire_cooldown: float = 0.0
-
+var projectile_count = 0
 
 
 func _ready() -> void:
@@ -88,28 +86,29 @@ func _on_spawn(position: Vector2, direction: String):
 func _physics_process(delta: float) -> void:
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
-	# Start charging
-	#if Input.is_action_just_pressed("blaster"):
-		#is_charging = true
-		#charge_time = 0.0
+	#Start charging
+	if Input.is_action_just_pressed("blaster"):
+		is_charging = true
+		charge_time = 0.0
 #
-	## Hold to charge
-	#if is_charging and Input.is_action_pressed("blaster"):
-		#charge_time += delta
-		#charge_time = min(charge_time, MAX_CHARGE_TIME)
+	# Hold to charge
+	if is_charging and Input.is_action_pressed("blaster"):
+		charge_time += delta
+		charge_time = min(charge_time, MAX_CHARGE_TIME)
 #
 	## Release to fire
-	#if is_charging and Input.is_action_just_released("blaster"):
-		#is_charging = false
-		#fire_projectile(charge_time / MAX_CHARGE_TIME)
+	if is_charging and Input.is_action_just_released("blaster") and fire_cooldown <= 0:
+		is_charging = false
+		if charge_time >= 0.5:
+				fire_projectile(charge_time / MAX_CHARGE_TIME)
 	
 	if Input.is_action_just_pressed("blaster") and fire_cooldown <= 0:
-		var projectile_count = get_active_projectile_count()
-		if projectile_count < 2:
+		projectile_count = get_active_projectile_count()
+		if projectile_count < 3:
 			fire_cooldown = FIRE_RATE_MIN  # shorter cooldown if less than 3 projectiles
 		else:
 			fire_cooldown = FIRE_RATE_MAX  # normal cooldown (0.5)
-		fire_projectile(0.3)
+		fire_projectile(0.5)
 		print("Active projectiles:", get_active_projectile_count())
 
 
