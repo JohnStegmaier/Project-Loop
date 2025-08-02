@@ -12,6 +12,7 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	ScoreManager.health = 100
 	ScoreManager.score = 0
+	NavigationManager.spawn_door_tag = null
 	level_root.pauseMenu()
 	get_tree().change_scene_to_file("res://Scenes/Game Scenes/00_main_menu.tscn")
 	pass
