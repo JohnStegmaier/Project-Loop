@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 class_name BlasterShot
 
@@ -8,15 +8,18 @@ var direction = Vector2.RIGHT
 var scale_factor: float = 1.0
 var sprite : AnimatedSprite2D
 var no_longer_on_screen : VisibleOnScreenNotifier2D
+var explosion : GPUParticles2D
+var collision_shape: CollisionShape2D
 
 static var active_projectile_count := 0
 
 func _ready():
-	sprite = get_node("Area2D/AnimatedSprite2D")
-	no_longer_on_screen = get_node("Area2D/VisibleOnScreenNotifier2D")
+	sprite = get_node("AnimatedSprite2D")
+	no_longer_on_screen = get_node("VisibleOnScreenNotifier2D")
 	active_projectile_count += 1
 	scale = Vector2.ONE * scale_factor
 	no_longer_on_screen.connect("screen_exited", self._on_screen_exited)
+	connect("body_entered", Callable(self, "_on_body_entered"))
 	sprite.play()
 	
 func _exit_tree():
@@ -44,3 +47,21 @@ func init(charge_ratio: float, facing_left: bool) -> void:
 	
 func _process(delta: float) -> void:
 	position += direction * speed * delta
+	
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		return
+	else:
+		speed = 0
+		set_process(false)
+		if collision_shape:
+			collision_shape.disabled = true
+		if sprite:
+			sprite.visible = false
+			
+		explosion = get_node("blaster_impact")
+		explosion.emitting = true
+		explosion.restart()
+		explosion.global_position = global_position
+		await get_tree().create_timer(explosion.lifetime).timeout
+	queue_free()

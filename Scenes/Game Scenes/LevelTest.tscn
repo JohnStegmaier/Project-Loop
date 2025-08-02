@@ -1,7 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://cn5n77mcy1jib"]
+[gd_scene load_steps=27 format=4 uid="uid://cn5n77mcy1jib"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_r7f2y"]
-[ext_resource type="Script" uid="uid://bkn2npcr3yqmi" path="res://Scripts/level_test.gd" id="1_ug50a"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="3_jirwo"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="3_y8c61"]
 [ext_resource type="Texture2D" uid="uid://b03gasgc5jrkc" path="res://Assets/Tilesets/background4b.png" id="4_e00sg"]
@@ -1691,8 +1690,8 @@ size = Vector2(38, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g414q"]
 size = Vector2(1.77364, 26.2927)
 
-[node name="Node2D2" type="Node2D"]
-script = ExtResource("1_ug50a")
+[node name="Node2D" type="Node2D"]
+
 metadata/_edit_lock_ = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
