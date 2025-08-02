@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c0jre0obv2jlg" path="res://Assets/2D Assets/1_Industrial_Tileset_1.png" id="8_jirwo"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="13_jirwo"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="14_y8c61"]
-[ext_resource type="Script" uid="uid://c4dvbchy5m3tc" path="res://Scripts/destructable_object.gd" id="15_g414q"]
+[ext_resource type="Script" uid="uid://c4dvbchy5m3tc" path="res://Scripts/destructible_object.gd" id="15_g414q"]
 [ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="16_8dxgu"]
 [ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="16_g414q"]
 
@@ -1920,23 +1920,23 @@ shape = SubResource("RectangleShape2D_jirwo")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("16_8dxgu")]
 
-[node name="Destructable Pillar" type="Area2D" parent="."]
+[node name="Destructible Pillar" type="Area2D" parent="."]
 position = Vector2(181, 693)
 script = ExtResource("15_g414q")
 hit_damage = 10
 
-[node name="Pillar Sprite" type="Sprite2D" parent="Destructable Pillar"]
+[node name="Pillar Sprite" type="Sprite2D" parent="Destructible Pillar"]
 scale = Vector2(2.15343, 2.15343)
 texture = ExtResource("16_g414q")
 
-[node name="Object Presence" type="StaticBody2D" parent="Destructable Pillar/Pillar Sprite"]
+[node name="Object Presence" type="StaticBody2D" parent="Destructible Pillar/Pillar Sprite"]
 scale = Vector2(3.94673, 3.57513)
 
-[node name="Collision Area" type="CollisionShape2D" parent="Destructable Pillar/Pillar Sprite/Object Presence"]
+[node name="Collision Area" type="CollisionShape2D" parent="Destructible Pillar/Pillar Sprite/Object Presence"]
 position = Vector2(0.633453, 0)
 shape = SubResource("RectangleShape2D_g414q")
 
-[node name="Destruction Contact Area" type="CollisionShape2D" parent="Destructable Pillar"]
+[node name="Destruction Contact Area" type="CollisionShape2D" parent="Destructible Pillar"]
 position = Vector2(5, 0)
 shape = SubResource("CapsuleShape2D_y8c61")
 debug_color = Color(0.940648, 0.168652, 0.449195, 0.42)
