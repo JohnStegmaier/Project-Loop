@@ -13,9 +13,12 @@ const DEBUG_OBJECT = false
 const SLIDE_SPEED = 500
 const SLIDE_DURATION = 0.17
 const EXTENDED_COYOTE_TIME = 0.4
+const VARIABLE_JUMP_TIME = 2
+const JUMP_CUT_MULTIPLIER = 100
 
 var is_sliding: bool = false
 var slide_timer: float = 0.0
+var timer : SceneTreeTimer
 
 var sprite : AnimatedSprite2D
 
@@ -83,6 +86,7 @@ func _on_spawn(position: Vector2, direction: String):
 		camera.position_smoothing_enabled = true
 	# do something with direction here
 
+######################################################## Physics Processing Loop ########################################################
 func _physics_process(delta: float) -> void:
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
@@ -227,7 +231,13 @@ func _physics_process(delta: float) -> void:
 			jump_buffer = true
 			get_tree().create_timer(Jump_Buffer_Time).timeout.connect(on_jump_buffer_timeout)
 	move_and_slide()
+######################################################## Physics Processing Loop ######################################################## 
+	
 
+func _input(event: InputEvent) -> void:
+	if(event.is_action_released("jump")):
+		cut_jump_short()
+	
 func direction_based_on_input() -> float :
 	return (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * MOVE_SPEED
 
@@ -255,6 +265,7 @@ func debug_log_movement() -> void :
 		Logger.log_debug("Hello World")
 
 func jump() -> void:
+	timer = get_tree().create_timer(VARIABLE_JUMP_TIME)
 	if sprite:
 		sprite.play("jumping")
 	var actual_jump_force = JUMP_FORCE
@@ -268,6 +279,10 @@ func _on_coyote_timer_timeout() -> void:
 	jump_available = false
 	velocity.y += GRAVITY
 
+func cut_jump_short () -> void:
+	velocity.y += timer.time_left * JUMP_CUT_MULTIPLIER
+	timer.time_left = 0
+	
 func on_jump_buffer_timeout() -> void:
 	Logger.log_debug("Jump buffer has timed out")
 	jump_buffer = false

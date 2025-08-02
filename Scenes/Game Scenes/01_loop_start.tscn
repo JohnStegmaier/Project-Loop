@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_a0a4o"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="1_gbtja"]
-[ext_resource type="Script" path="res://Scripts/01_loop_start.gd" id="1_q8vuo"]
+[ext_resource type="Script" uid="uid://esty7ybnc0p5" path="res://Scripts/01_loop_start.gd" id="1_q8vuo"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="5_06wqv"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="6_g20h4"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="7_2r5bh"]
-[ext_resource type="Script" path="res://Scripts/UI.gd" id="8_qp2oi"]
+[ext_resource type="Script" uid="uid://f0dkkk30hgpv" path="res://Scripts/UI.gd" id="8_qp2oi"]
 [ext_resource type="Texture2D" uid="uid://b03gasgc5jrkc" path="res://Assets/Tilesets/background4b.png" id="8_rfe8e"]
 [ext_resource type="Texture2D" uid="uid://66oy4gpd1m40" path="res://Assets/Tilesets/ScifiLab/back.png" id="9_frnmx"]
 [ext_resource type="Texture2D" uid="uid://b3hs8b36wn1pu" path="res://bg-wall-with-supports.png" id="10_0xv7n"]
@@ -1076,7 +1076,6 @@ step = 0.001
 value = 100.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="LowerRocks" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(595, -36)
@@ -1235,7 +1234,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 960, 228.5)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
-visible = false
 offset = Vector2(-2278, 0)
 transform = Transform2D(1, 0, 0, 1, -2278, 0)
 
