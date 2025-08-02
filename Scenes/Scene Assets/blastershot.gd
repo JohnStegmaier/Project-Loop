@@ -10,7 +10,6 @@ var sprite : AnimatedSprite2D
 var no_longer_on_screen : VisibleOnScreenNotifier2D
 var explosion : GPUParticles2D
 var collision_shape: CollisionShape2D
-var impact_offset_x = 200
 var _charge_ratio
 
 static var active_projectile_count := 0
