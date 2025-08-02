@@ -10,3 +10,4 @@ func _on_body_entered(body):
         Logger.log_debug("U GOT A BOLT WOOOOOOOO!", DEBUG_LOGS)
         ScoreManager.add_score(1)
         queue_free()
+		
