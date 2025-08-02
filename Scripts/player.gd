@@ -64,6 +64,7 @@ var projectile_count = 0
 
 
 func _ready() -> void:
+	timer = get_tree().create_timer(0)
 	NavigationManager.on_trigger_player_spawn.connect(_on_spawn)
 	sprite = get_node("Cyborg")
 	Jump_Buffer_Time = 0.1
@@ -88,6 +89,7 @@ func _on_spawn(position: Vector2, direction: String):
 
 ######################################################## Physics Processing Loop ########################################################
 func _physics_process(delta: float) -> void:
+	Logger.log_debug("Time left on timer: %s" % timer.time_left)
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
 	#Start charging
@@ -265,7 +267,7 @@ func debug_log_movement() -> void :
 		Logger.log_debug("Hello World")
 
 func jump() -> void:
-	timer = get_tree().create_timer(VARIABLE_JUMP_TIME)
+	timer = get_tree().create_timer(2)
 	if sprite:
 		sprite.play("jumping")
 	var actual_jump_force = JUMP_FORCE
