@@ -3,7 +3,7 @@ extends Node
 
 enum Level { DEBUG, INFO, WARN, ERROR, OFF }
 
-var current_level: Level = Level.DEBUG
+var current_level: Level = Level.OFF
 
 func log_debug(msg: String, class_level_debug_enabled: bool = true) -> void:
 	if current_level <= Level.DEBUG && class_level_debug_enabled:
