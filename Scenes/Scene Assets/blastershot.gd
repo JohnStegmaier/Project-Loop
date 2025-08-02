@@ -64,7 +64,7 @@ func _on_body_entered(body: Node2D) -> void:
 		speed = 0
 		set_process(false)
 		if collision_shape:
-			collision_shape.disabled = true
+			collision_shape.call_deferred("set_disabled", true)
 		if sprite:
 			sprite.visible = false
 			explosion.emitting = true
