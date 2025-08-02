@@ -286,7 +286,7 @@ func cut_jump_short () -> void:
 	timer.time_left = 0
 	
 func on_jump_buffer_timeout() -> void:
-	Logger.log_debug("Jump buffer has timed out")
+	Logger.log_debug("Jump buffer has timed out", DEBUG_OBJECT)
 	jump_buffer = false
 
 func _on_death_zone_body_entered(body: Node2D) -> void:
