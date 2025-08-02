@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="16_8dxgu"]
 [ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="16_g414q"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xew73"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8c61"]
 texture = ExtResource("4_nvme5")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -212,7 +212,7 @@ texture = ExtResource("4_nvme5")
 11:7/0 = 0
 11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmniw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g414q"]
 texture = ExtResource("5_r3mpu")
 6:1/0 = 0
 20:1/0 = 0
@@ -1140,7 +1140,7 @@ texture = ExtResource("5_r3mpu")
 1:63/0 = 0
 29:63/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y8c61"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dxgu"]
 texture = ExtResource("6_5ya6a")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1431,7 +1431,7 @@ texture = ExtResource("6_5ya6a")
 11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:7/0/physics_layer_0/polygon_1/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g414q"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_76pdq"]
 texture = ExtResource("7_ug50a")
 0:0/0 = 0
 1:0/0 = 0
@@ -1470,7 +1470,7 @@ texture = ExtResource("7_ug50a")
 4:5/0 = 0
 5:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dxgu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbmf7"]
 texture = ExtResource("8_jirwo")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8, -8, -8)
@@ -1667,11 +1667,11 @@ texture = ExtResource("8_jirwo")
 
 [sub_resource type="TileSet" id="TileSet_e00sg"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_xew73")
-sources/1 = SubResource("TileSetAtlasSource_jmniw")
-sources/2 = SubResource("TileSetAtlasSource_y8c61")
-sources/3 = SubResource("TileSetAtlasSource_g414q")
-sources/4 = SubResource("TileSetAtlasSource_8dxgu")
+sources/0 = SubResource("TileSetAtlasSource_y8c61")
+sources/1 = SubResource("TileSetAtlasSource_g414q")
+sources/2 = SubResource("TileSetAtlasSource_8dxgu")
+sources/3 = SubResource("TileSetAtlasSource_76pdq")
+sources/4 = SubResource("TileSetAtlasSource_vbmf7")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jirwo"]
 viewport_path = NodePath("3D Bolt Texture")
