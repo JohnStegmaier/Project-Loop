@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const DEBUG_LOG = true
+const DEBUG_LOG = false
 
 @onready var score_label: RichTextLabel = get_node("Control/Panel/Score")
 @onready var battery_bar: ProgressBar = get_node("Control/LifeBarPanel/Battery")
