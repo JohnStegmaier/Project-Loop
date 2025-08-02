@@ -89,7 +89,7 @@ func _on_spawn(position: Vector2, direction: String):
 
 ######################################################## Physics Processing Loop ########################################################
 func _physics_process(delta: float) -> void:
-	Logger.log_debug("Time left on timer: %s" % timer.time_left)
+	Logger.log_debug("Time left on timer: %s" % timer.time_left, DEBUG_OBJECT)
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
 	#Start charging
