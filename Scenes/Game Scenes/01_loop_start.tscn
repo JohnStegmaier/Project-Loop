@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c3joe3osepg4w"]
+[gd_scene load_steps=33 format=4 uid="uid://c3joe3osepg4w"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_a0a4o"]
 [ext_resource type="Texture2D" uid="uid://btybe5jdv2mmp" path="res://Assets/Compressed Assets/Roby v01.png" id="1_gbtja"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bfbslbfn4cla8" path="res://Assets/2D Assets/1_Industrial_Tileset_1B.png" id="12_doqbh"]
 [ext_resource type="Texture2D" uid="uid://jqlyi84lpwbt" path="res://Assets/2D Assets/1_Industrial_Tileset_1C.png" id="13_s7oi5"]
 [ext_resource type="Texture2D" uid="uid://o41sklbe1op8" path="res://Assets/Tilesets/spikes.png" id="14_frnmx"]
+[ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="15_0xv7n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v16l4"]
 viewport_path = NodePath("Bolts/3D Bolt Texture")
@@ -1363,6 +1364,9 @@ polygon = PackedVector2Array(2802, 777, 2800, 473, 2925, 494, 2923, 779)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Polygon2D2/StaticBody2D"]
 polygon = PackedVector2Array(2801, 777, 2801, 473, 2925, 494, 2923, 778)
 one_way_collision = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("15_0xv7n")]
+visible = false
 
 [connection signal="input_event" from="Polygon2D/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="input_event" from="Polygon2D2/StaticBody2D" to="." method="_on_static_body_2d_input_event"]
