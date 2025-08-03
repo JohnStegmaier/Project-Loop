@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dtjd5fjo0lvud"]
+[gd_scene load_steps=20 format=4 uid="uid://dtjd5fjo0lvud"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_3p7mx"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="2_uks3s"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="11_10cn8"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="12_6wk3r"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="13_0hcen"]
+[ext_resource type="AudioStream" uid="uid://cutsbqvpghkd4" path="res://Assets/Audio/90s-game-music-no-copyright-352850.mp3" id="15_vseod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_av6ex"]
 size = Vector2(1.77364, 26.2927)
@@ -203,5 +204,10 @@ position = Vector2(57, -62)
 
 [node name="Spawn" parent="Door_To_TestScene" index="1"]
 position = Vector2(2, -65)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_vseod")
+autoplay = true
+parameters/looping = true
 
 [editable path="Door_To_TestScene"]

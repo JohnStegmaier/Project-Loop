@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cixx5dbanxem1"]
+[gd_scene load_steps=13 format=3 uid="uid://cixx5dbanxem1"]
 
 [ext_resource type="Script" uid="uid://omnnwnlrok7u" path="res://Scenes/Scene Assets/blastershot.gd" id="1_75olm"]
 [ext_resource type="Texture2D" uid="uid://drkecymfofc52" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt1.png" id="1_npoyu"]
 [ext_resource type="Texture2D" uid="uid://cqmja04ftot3d" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt2.png" id="2_n38fa"]
 [ext_resource type="Texture2D" uid="uid://o11fg825rqda" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt3.png" id="3_u7vh8"]
 [ext_resource type="Texture2D" uid="uid://cdmci7kpwr818" path="res://Assets/2D Assets/SpriteFrames/Blaster/bolt4.png" id="4_tp4sh"]
+[ext_resource type="AudioStream" uid="uid://bgmgen456wy6x" path="res://Assets/Audio/laser-312360.mp3" id="6_heb2k"]
+[ext_resource type="AudioStream" uid="uid://f03wvoxqelg5" path="res://Assets/Audio/90s-game-ui-1-185094.mp3" id="7_h3wbl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvb8p"]
 radius = 6.0
@@ -66,3 +68,9 @@ lifetime = 0.53
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_w5v4d")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_heb2k")
+
+[node name="collide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h3wbl")

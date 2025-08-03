@@ -12,6 +12,8 @@ var explosion : GPUParticles2D
 var collision_shape: CollisionShape2D
 var _charge_ratio = 0
 var Destructable_Object : Area2D
+var sound = preload("res://Assets/Audio/laser-312360.mp3")
+var player = AudioStreamPlayer.new()
 
 static var active_projectile_count := 0
 
@@ -24,6 +26,15 @@ func _ready():
 	no_longer_on_screen.connect("screen_exited", self._on_screen_exited)
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	sprite.play()
+	
+	var audio = AudioStreamPlayer.new()
+	audio.stream = sound
+	if _charge_ratio == 1:
+		audio.pitch_scale = randf_range(0.3,0.4)
+	else:
+		audio.pitch_scale = randf_range(0.7, 1.0)
+	add_child(audio)
+	audio.play()
 	explosion = get_node("blaster_impact")
 	
 func _exit_tree():
@@ -68,6 +79,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if sprite:
 			sprite.visible = false
 			explosion.emitting = true
+			$collide.play()
 			explosion.restart()
 			if is_facing_left == false:
 				explosion.global_position = global_position + Vector2(lerp(-10,25,_charge_ratio), 0)
