@@ -401,7 +401,7 @@ _data = {
 script = ExtResource("1_do66n")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(41, 407)
+position = Vector2(44, 416)
 script = ExtResource("1_x3j2f")
 BlasterShot = ExtResource("2_bowi5")
 
@@ -932,7 +932,7 @@ spawn_direction = "left"
 position = Vector2(57, -62)
 
 [node name="Spawn" parent="Doors/Door_To_Spawn" index="1"]
-position = Vector2(58, -24)
+position = Vector2(58, -10)
 
 [node name="Door_To_05_Level" parent="Doors" instance=ExtResource("10_qokbd")]
 position = Vector2(5196, 583)
