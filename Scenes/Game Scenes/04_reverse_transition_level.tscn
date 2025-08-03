@@ -382,21 +382,6 @@ tracks/0/keys = {
 "values": [0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_xgayh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Piston Path:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_a4pq8"]
 resource_name = "Piston Animation_2"
 length = 6.0
@@ -429,6 +414,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.025, 0.0, 0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xgayh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Piston Path:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a4pq8"]
@@ -597,7 +597,7 @@ rotation = 1.5708
 curve = SubResource("Curve2D_xgayh")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Moving Platform2"]
-position = Vector2(166.103, -1)
+position = Vector2(294, -1.00024)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Moving Platform2/AnimatableBody2D"]
 physics_interpolation_mode = 1
@@ -707,7 +707,6 @@ position = Vector2(1708, 60)
 curve = SubResource("Curve2D_b7y5f")
 
 [node name="PistonAnimatableBody2D" type="AnimatableBody2D" parent="Piston 1"]
-position = Vector2(0, 0.184635)
 rotation = 1.5708
 
 [node name="PistonCollisionShape2D" type="CollisionShape2D" parent="Piston 1/PistonAnimatableBody2D"]
