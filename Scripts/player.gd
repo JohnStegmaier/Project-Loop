@@ -298,7 +298,6 @@ func jump() -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
-	velocity.y += GRAVITY
 
 func cut_jump_short () -> void:
 	velocity.y += timer.time_left * JUMP_CUT_MULTIPLIER
@@ -331,8 +330,8 @@ var time_accumulator := 0.0
 
 func _process(delta):
 	time_accumulator += delta
-	if time_accumulator >= 0.1:
-		print("x: %s",velocity.x)
-		print("y: %s",velocity.y)
+	if time_accumulator >= 0.01 and (GRAVITY != 30):
+		#print("x: %s",velocity.x)
+		print(GRAVITY)
 		time_accumulator = 0.0
 		
