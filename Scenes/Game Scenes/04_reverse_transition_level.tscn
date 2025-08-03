@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://b37ksb7rorgdh"]
+[gd_scene load_steps=43 format=4 uid="uid://b37ksb7rorgdh"]
 
 [ext_resource type="Script" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="2_nwgn1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c4dvbchy5m3tc" path="res://Scripts/destructible_object.gd" id="10_5xtin"]
 [ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="11_axul6"]
 [ext_resource type="Texture2D" uid="uid://c0jre0obv2jlg" path="res://Assets/2D Assets/1_Industrial_Tileset_1.png" id="11_b7y5f"]
+[ext_resource type="AudioStream" uid="uid://bxvwf40s8hm66" path="res://Assets/Audio/collect-points-190037.mp3" id="12_a4pq8"]
 [ext_resource type="Texture2D" uid="uid://bfbslbfn4cla8" path="res://Assets/2D Assets/1_Industrial_Tileset_1B.png" id="12_ttmyq"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="12_u40gl"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="13_2g5mc"]
@@ -15,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="14_2g57p"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="14_ttmyq"]
 [ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="15_nwgn1"]
+[ext_resource type="AudioStream" uid="uid://cutsbqvpghkd4" path="res://Assets/Audio/90s-game-music-no-copyright-352850.mp3" id="17_1214t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpqr"]
 size = Vector2(3.24003, 26.5251)
@@ -636,6 +638,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 1"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 1"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 2" type="Area2D" parent="Bolts"]
 position = Vector2(3034, 506)
 scale = Vector2(0.611111, 0.611111)
@@ -647,6 +652,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 2"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 2"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 3" type="Area2D" parent="Bolts"]
 position = Vector2(2830, 266)
@@ -660,6 +668,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 3"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 3"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 4" type="Area2D" parent="Bolts"]
 position = Vector2(2684, 267)
 scale = Vector2(0.611111, 0.611111)
@@ -671,6 +682,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 4"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 4"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 5" type="Area2D" parent="Bolts"]
 position = Vector2(2128, 241)
@@ -684,6 +698,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 5"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 5"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 6" type="Area2D" parent="Bolts"]
 position = Vector2(2131, 492)
 scale = Vector2(0.611111, 0.611111)
@@ -695,6 +712,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 6"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 6"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 7" type="Area2D" parent="Bolts"]
 position = Vector2(1549, 454)
@@ -708,6 +728,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 7"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 7"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 8" type="Area2D" parent="Bolts"]
 position = Vector2(1581, 247)
 scale = Vector2(0.611111, 0.611111)
@@ -719,6 +742,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 8"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 8"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 10" type="Area2D" parent="Bolts"]
 position = Vector2(1438, 245)
@@ -732,6 +758,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 10"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 10"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 11" type="Area2D" parent="Bolts"]
 position = Vector2(862, 420)
 scale = Vector2(0.611111, 0.611111)
@@ -743,6 +772,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 11"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 11"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 12" type="Area2D" parent="Bolts"]
 position = Vector2(-23.0002, 374)
@@ -756,6 +788,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 12"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 12"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 13" type="Area2D" parent="Bolts"]
 position = Vector2(218, 604)
 scale = Vector2(0.611111, 0.611111)
@@ -767,6 +802,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 13"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 13"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 14" type="Area2D" parent="Bolts"]
 position = Vector2(-495, 282)
@@ -780,6 +818,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 14"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 14"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 15" type="Area2D" parent="Bolts"]
 position = Vector2(-830, 447)
 scale = Vector2(0.611111, 0.611111)
@@ -791,6 +832,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 15"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 15"]
+stream = ExtResource("12_a4pq8")
 
 [node name="Bolt 16" type="Area2D" parent="Bolts"]
 position = Vector2(-1531, 248)
@@ -804,6 +848,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 16"]
 shape = SubResource("RectangleShape2D_mg12w")
 
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 16"]
+stream = ExtResource("12_a4pq8")
+
 [node name="Bolt 9" type="Area2D" parent="Bolts"]
 position = Vector2(1694, 247)
 scale = Vector2(0.611111, 0.611111)
@@ -815,6 +862,9 @@ texture = SubResource("ViewportTexture_kkwvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bolts/Bolt 9"]
 shape = SubResource("RectangleShape2D_mg12w")
+
+[node name="BoltGet" type="AudioStreamPlayer" parent="Bolts/Bolt 9"]
+stream = ExtResource("12_a4pq8")
 
 [node name="3D Bolt Texture" type="SubViewport" parent="Bolts"]
 transparent_bg = true
@@ -1044,6 +1094,11 @@ position = Vector2(9, -78)
 
 [node name="PauseMenu" parent="." instance=ExtResource("14_2g57p")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_1214t")
+autoplay = true
+parameters/looping = true
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
 
