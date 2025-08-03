@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c0jre0obv2jlg" path="res://Assets/2D Assets/1_Industrial_Tileset_1.png" id="8_jirwo"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="13_jirwo"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="14_y8c61"]
-[ext_resource type="Script" path="res://Scripts/destructible_object.gd" id="15_g414q"]
+[ext_resource type="Script" uid="uid://c4dvbchy5m3tc" path="res://Scripts/destructible_object.gd" id="15_g414q"]
 [ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="16_8dxgu"]
 [ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="16_g414q"]
 [ext_resource type="PackedScene" path="res://Scenes/Game Scenes/pause_menu.tscn" id="18_vbmf7"]
