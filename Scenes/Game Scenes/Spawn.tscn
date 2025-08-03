@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bab8q3lwp3q54"]
+[gd_scene load_steps=18 format=4 uid="uid://bab8q3lwp3q54"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_t5m8g"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="2_rxqr3"]
@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://be401px2ecl2s" path="res://Assets/2D Assets/cyberpunk-detective-props/PNG/big-computer.png" id="5_l1q0k"]
 [ext_resource type="Texture2D" uid="uid://coatakcngahp7" path="res://Assets/2D Assets/Exit_sign.png" id="5_rxqr3"]
 [ext_resource type="Texture2D" uid="uid://ftebtmw0os3d" path="res://Assets/2D Assets/cyberpunk-detective-props/PNG/elevator.png" id="6_0fr2q"]
-[ext_resource type="Script" path="res://Scripts/destructible_object.gd" id="9_l2ouu"]
+[ext_resource type="Script" uid="uid://c4dvbchy5m3tc" path="res://Scripts/destructible_object.gd" id="9_l2ouu"]
 [ext_resource type="Texture2D" uid="uid://d3758kcrsgh5s" path="res://Assets/2D Assets/Props/antenna.png" id="10_ea83u"]
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="11_ea83u"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="12_k5v5r"]
+[ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="13_5tcfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5v5r"]
 size = Vector2(1.77364, 26.2927)
@@ -37,18 +38,18 @@ BlasterShot = ExtResource("2_rxqr3")
 [node name="Cyborg" type="AnimatedSprite2D" parent="Player"]
 light_mask = 0
 visibility_layer = 513
-position = Vector2(17, -11)
-scale = Vector2(1.95, 1.95)
+position = Vector2(17, -23)
+scale = Vector2(2.00625, 1.95)
 sprite_frames = ExtResource("3_i4aqn")
-animation = &"run"
-frame_progress = 0.883941
+animation = &"jumping"
+frame_progress = 0.588815
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 light_mask = 0
 visibility_layer = 512
-position = Vector2(17, -1)
-scale = Vector2(0.6, 0.6)
-polygon = PackedVector2Array(-18, -48, -14, -20, -28, -19, -25, 29, -18, 28, -15, -4, -11, -4, -14, 57, -14, 60, -4, 60, -5, 28, 2, 29, 4, 60, 14, 60, 14, -4, 17, -4, 19, 28, 27, 28, 29, -21, 12, -21, 14, -48)
+position = Vector2(19, -8)
+scale = Vector2(0.8625, 0.6625)
+polygon = PackedVector2Array(-18, -48, -14, -20, -13.3334, -18.3333, -13.3334, -15, -11.6667, -5, -15, -11.6666, -16.6667, -1.66663, -15, 46.6667, -15, 46.6667, -6.66669, 46.6667, -5, 28, 2, 29, 5, 46.6667, 16.6666, 46.6667, 16.6666, -3.33331, 17, -4, 13.3333, -8.33331, 13.3333, -11.6666, 11.6666, -16.6666, 12, -21, 14, -48)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.8, 1.8)
@@ -181,3 +182,17 @@ shape = SubResource("RectangleShape2D_5tcfi")
 transparent_bg = true
 
 [node name="Bolt" parent="3D Bolt Texture" instance=ExtResource("12_k5v5r")]
+
+[node name="Door_To_TestScene" parent="." instance=ExtResource("13_5tcfi")]
+position = Vector2(3856, 579)
+destination_level_tag = "02_first_level"
+destination_door_tag = "To_Scene_1"
+spawn_direction = "left"
+
+[node name="CollisionShape2D" parent="Door_To_TestScene" index="0"]
+position = Vector2(57, -62)
+
+[node name="Spawn" parent="Door_To_TestScene" index="1"]
+position = Vector2(2, -65)
+
+[editable path="Door_To_TestScene"]
