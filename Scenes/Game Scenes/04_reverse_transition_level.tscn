@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=4 uid="uid://b37ksb7rorgdh"]
 
-[ext_resource type="Script" uid="uid://cinpy6wt0whwj" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
+[ext_resource type="Script" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="2_nwgn1"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="3_xgayh"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="4_a4pq8"]
