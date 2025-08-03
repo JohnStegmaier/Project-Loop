@@ -19,6 +19,7 @@ const JUMP_CUT_MULTIPLIER = 100
 var is_sliding: bool = false
 var slide_timer: float = 0.0
 var timer : SceneTreeTimer
+var tree = get_tree()
 
 var sprite : AnimatedSprite2D
 
@@ -65,6 +66,25 @@ const FIRE_RATE_MAX: float = 0.35
 var fire_cooldown: float = 0.0
 var projectile_count = 0
 
+#knockback on dmg
+var is_knocked_back = false
+var knockback_timer = 0.0
+var knockback_direction = Vector2.ZERO
+const KNOCKBACK_DURATION = 0.1
+const KNOCKBACK_FORCE = 30
+var invincible = false
+var horizontal_force = -30.0
+var vertical_force = -20
+var resetting = false
+var frozen = false
+
+#damage blinking
+var is_blinking = false
+var blink_duration = 1.0   # total blink time in seconds
+var blink_timer = 0.0
+var blink_interval = 0.1   # how fast it toggles
+var blink_toggle_timer = 0.0
+
 
 func _ready() -> void:
 	timer = get_tree().create_timer(0)
@@ -93,6 +113,35 @@ func _on_spawn(position: Vector2, direction: String):
 
 ######################################################## Physics Processing Loop ########################################################
 func _physics_process(delta: float) -> void:
+	if is_blinking:
+		blink_timer -= delta
+		blink_toggle_timer -= delta
+		if blink_toggle_timer <= 0:
+			blink_toggle_timer = blink_interval
+			if sprite.modulate == Color(0.3,0.1,0):
+				sprite.modulate = Color(1,1,1)  # normal color
+			else:
+				sprite.modulate = Color(0.3,0.1,0)    # blink red
+
+		if blink_timer <= 0:
+			is_blinking = false
+			sprite.modulate = Color(1,1,1)  # reset to normal color
+
+	if frozen:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
+	if is_knocked_back:
+		start_blinking()
+		velocity = knockback_direction * KNOCKBACK_FORCE
+		knockback_timer -= delta
+		if knockback_timer <= 0:
+			is_knocked_back = false
+			velocity = Vector2.ZERO
+			freeze_for(KNOCKBACK_DURATION * 5)
+			
+	
 	Logger.log_debug("Time left on timer: %s" % timer.time_left, DEBUG_OBJECT)
 	if fire_cooldown > 0:
 		fire_cooldown -= delta
@@ -324,3 +373,27 @@ func get_active_projectile_count() -> int:
 		if child is BlasterShot:
 			count += 1
 	return count
+	
+func apply_knockback(from_position: Vector2):
+	if is_knocked_back:
+		return
+	knockback_direction = Vector2(sign(direction_vector) * horizontal_force, vertical_force)
+	knockback_timer = KNOCKBACK_DURATION
+	is_knocked_back = true
+
+func freeze_for(seconds):
+	frozen = true
+	await get_tree().create_timer(seconds).timeout
+	frozen = false
+	is_knocked_back = false
+	start_reset_sequence()
+	
+	
+func start_reset_sequence() -> void:
+	get_tree().reload_current_scene()
+	
+func start_blinking():
+	is_blinking = true
+	blink_timer = blink_duration
+	blink_toggle_timer = 0
+	sprite.modulate = Color(0.3,0.1,0)

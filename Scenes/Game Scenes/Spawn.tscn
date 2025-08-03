@@ -145,7 +145,7 @@ tile_map_data = PackedByteArray("AAAYABoABAABAAIAAAAbABoABAAEAAIAAAAcABkABAAFAAE
 tile_set = ExtResource("4_qjkgr")
 
 [node name="Destructible Pillar" type="Area2D" parent="."]
-position = Vector2(2814, 388)
+position = Vector2(783, 382)
 scale = Vector2(1.62069, 1.62069)
 script = ExtResource("9_l2ouu")
 hit_damage = 10.0
@@ -156,13 +156,16 @@ scale = Vector2(2.15343, 2.15343)
 texture = ExtResource("10_ea83u")
 
 [node name="Object Presence" type="StaticBody2D" parent="Destructible Pillar/Pillar Sprite"]
+visible = false
 scale = Vector2(3.94673, 3.57513)
 
 [node name="Collision Area" type="CollisionShape2D" parent="Destructible Pillar/Pillar Sprite/Object Presence"]
+visible = false
 position = Vector2(0.633453, 0)
 shape = SubResource("RectangleShape2D_k5v5r")
 
 [node name="Destruction Contact Area" type="CollisionShape2D" parent="Destructible Pillar"]
+visible = false
 position = Vector2(5, 0)
 shape = SubResource("CapsuleShape2D_5tcfi")
 debug_color = Color(0.940648, 0.168652, 0.449195, 0.42)

@@ -52,6 +52,7 @@ tile_map_data = PackedByteArray("AAAeADIAAQAQAAUAAAAfADIAAQARAAUAAAAgADIAAQASAAU
 tile_set = ExtResource("9_s46xd")
 
 [node name="Layered_Decoration" type="TileMapLayer" parent="Stage"]
+tile_map_data = PackedByteArray("AABCACsABgAAAAAAAQBEACsABgAAAAAAAQBGACsABgAAAAAAAQA=")
 tile_set = ExtResource("9_s46xd")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Stage"]
