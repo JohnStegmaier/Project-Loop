@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Loop"
-config/version="0.5.0-SNAPSHOT"
+config/version="0.5.0"
 run/main_scene="uid://bff7j1pbmewsu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
