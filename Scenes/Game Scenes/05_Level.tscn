@@ -267,8 +267,8 @@ position = Vector2(-6, -68)
 
 [node name="Door_To_04_reverse_transition_level" parent="Doors" instance=ExtResource("10_qanff")]
 position = Vector2(130, 1244)
-destination_level_tag = "02_first_level"
-destination_door_tag = "To_Scene_1"
+destination_level_tag = "04_reverse_transition_level"
+destination_door_tag = "To_05_Level"
 spawn_direction = "left"
 
 [node name="CollisionShape2D" parent="Doors/Door_To_04_reverse_transition_level" index="0"]

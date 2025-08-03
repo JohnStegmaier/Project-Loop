@@ -1016,18 +1016,20 @@ libraries = {
 }
 autoplay = "04_First_Sliding_Ground"
 
-[node name="Door_To_TestScene" parent="." instance=ExtResource("14_ttmyq")]
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door_To_05_Level" parent="Doors" instance=ExtResource("14_ttmyq")]
 position = Vector2(4088, 582)
-destination_level_tag = "02_first_level"
-destination_door_tag = "To_Scene_1"
+destination_level_tag = "05_Level"
+destination_door_tag = "To_04_reverse_transition_level"
 spawn_direction = "left"
 
-[node name="CollisionShape2D" parent="Door_To_TestScene" index="0"]
+[node name="CollisionShape2D" parent="Doors/Door_To_05_Level" index="0"]
 position = Vector2(64, -62)
 
-[node name="Spawn" parent="Door_To_TestScene" index="1"]
+[node name="Spawn" parent="Doors/Door_To_05_Level" index="1"]
 position = Vector2(2, -65)
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
 
-[editable path="Door_To_TestScene"]
+[editable path="Doors/Door_To_05_Level"]
