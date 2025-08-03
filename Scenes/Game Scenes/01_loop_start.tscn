@@ -463,7 +463,7 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_frnmx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xv7n"]
 texture = ExtResource("11_gfa55")
 0:0/0 = 0
 1:0/0 = 0
@@ -562,7 +562,7 @@ texture = ExtResource("11_gfa55")
 10:7/0 = 0
 11:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xv7n"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfa55"]
 texture = ExtResource("12_doqbh")
 0:0/0 = 0
 1:0/0 = 0
@@ -661,7 +661,7 @@ texture = ExtResource("12_doqbh")
 10:7/0 = 0
 11:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfa55"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7oi5"]
 texture = ExtResource("13_s7oi5")
 0:0/0 = 0
 1:0/0 = 0
@@ -701,16 +701,16 @@ texture = ExtResource("13_s7oi5")
 5:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_doqbh"]
-sources/0 = SubResource("TileSetAtlasSource_frnmx")
-sources/1 = SubResource("TileSetAtlasSource_0xv7n")
-sources/2 = SubResource("TileSetAtlasSource_gfa55")
+sources/0 = SubResource("TileSetAtlasSource_0xv7n")
+sources/1 = SubResource("TileSetAtlasSource_gfa55")
+sources/2 = SubResource("TileSetAtlasSource_s7oi5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7oi5"]
 size = Vector2(96, 32)
 
 [sub_resource type="Animation" id="Animation_4pfj8"]
 resource_name = "Moving Platform"
-length = 2.0
+length = 0.5
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -719,7 +719,7 @@ tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-1.5, 1),
 "update": 0,
 "values": [0.0, 1.0]
