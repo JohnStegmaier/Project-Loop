@@ -803,7 +803,6 @@ curve = SubResource("Curve2D_s46xd")
 
 [node name="PistonAnimatableBody2D" type="AnimatableBody2D" parent="Piston 3"]
 rotation = 1.5708
-scale = Vector2(1, 1)
 
 [node name="PistonCollisionShape2D" type="CollisionShape2D" parent="Piston 3/PistonAnimatableBody2D"]
 position = Vector2(63.9677, -40)
