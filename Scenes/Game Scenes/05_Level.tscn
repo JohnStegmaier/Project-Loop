@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://der8q1x4yqnl"]
+[gd_scene load_steps=14 format=4 uid="uid://der8q1x4yqnl"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_b07y5"]
+[ext_resource type="Script" uid="uid://csmfqohp8a07r" path="res://Scripts/05_level.gd" id="1_dnd87"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="2_3jlc0"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="3_ywm5y"]
 [ext_resource type="TileSet" uid="uid://cymfkwgl45u43" path="res://Assets/Tilesets/ScifiLab/scifi2.0.tres" id="4_3jlc0"]
@@ -18,6 +19,7 @@ viewport_path = NodePath("Stage/3D Bolt Texture")
 size = Vector2(38, 50)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_dnd87")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-38, 140)
@@ -249,29 +251,31 @@ transparent_bg = true
 
 [node name="Bolt" parent="Stage/3D Bolt Texture" instance=ExtResource("9_dnd87")]
 
-[node name="Door_To_TestScene" parent="." instance=ExtResource("10_qanff")]
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door_To_start_zone" parent="Doors" instance=ExtResource("10_qanff")]
 position = Vector2(-20, 167)
-destination_level_tag = "02_first_level"
-destination_door_tag = "To_Scene_1"
+destination_level_tag = "start_zone"
+destination_door_tag = "To_05_Level"
 spawn_direction = "left"
 
-[node name="CollisionShape2D" parent="Door_To_TestScene" index="0"]
+[node name="CollisionShape2D" parent="Doors/Door_To_start_zone" index="0"]
 position = Vector2(3, -124)
 
-[node name="Spawn" parent="Door_To_TestScene" index="1"]
+[node name="Spawn" parent="Doors/Door_To_start_zone" index="1"]
 position = Vector2(-6, -68)
 
-[node name="Door_To_TestScene2" parent="." instance=ExtResource("10_qanff")]
+[node name="Door_To_04_reverse_transition_level" parent="Doors" instance=ExtResource("10_qanff")]
 position = Vector2(130, 1244)
 destination_level_tag = "02_first_level"
 destination_door_tag = "To_Scene_1"
 spawn_direction = "left"
 
-[node name="CollisionShape2D" parent="Door_To_TestScene2" index="0"]
+[node name="CollisionShape2D" parent="Doors/Door_To_04_reverse_transition_level" index="0"]
 position = Vector2(-201, -2)
 
-[node name="Spawn" parent="Door_To_TestScene2" index="1"]
+[node name="Spawn" parent="Doors/Door_To_04_reverse_transition_level" index="1"]
 position = Vector2(-169, -2)
 
-[editable path="Door_To_TestScene"]
-[editable path="Door_To_TestScene2"]
+[editable path="Doors/Door_To_start_zone"]
+[editable path="Doors/Door_To_04_reverse_transition_level"]

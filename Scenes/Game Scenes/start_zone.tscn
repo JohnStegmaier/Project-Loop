@@ -906,6 +906,19 @@ position = Vector2(57, -62)
 [node name="Spawn" parent="Doors/Door_To_Spawn" index="1"]
 position = Vector2(58, -24)
 
+[node name="Door_To_05_Level" parent="Doors" instance=ExtResource("10_qokbd")]
+position = Vector2(5196, 583)
+destination_level_tag = "05_Level"
+destination_door_tag = "To_start_zone"
+spawn_direction = "left"
+
+[node name="CollisionShape2D" parent="Doors/Door_To_05_Level" index="0"]
+position = Vector2(57, -62)
+
+[node name="Spawn" parent="Doors/Door_To_05_Level" index="1"]
+position = Vector2(23, -51)
+
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
 
 [editable path="Doors/Door_To_Spawn"]
+[editable path="Doors/Door_To_05_Level"]
