@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddec6m135vs08"]
+
+[ext_resource type="Script" uid="uid://bfckhcsl6sgnm" path="res://Scenes/Scene Assets/interactable.gd" id="1_xlm66"]
+[ext_resource type="Texture2D" uid="uid://b5pcgs4olpy1f" path="res://Assets/2D Assets/triangle-button.png" id="2_2v3gc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v3gc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xlm66")
+message = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0286448, 0.0286448)
+texture = ExtResource("2_2v3gc")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_2v3gc")
+
+[node name="PromptLabel" type="Label" parent="Sprite2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true

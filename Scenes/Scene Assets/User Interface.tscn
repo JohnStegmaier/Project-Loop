@@ -27,6 +27,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 offset_right = 256.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Score" type="RichTextLabel" parent="Control/Panel"]
 layout_mode = 1
@@ -45,6 +46,13 @@ bbcode_enabled = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
 
 [node name="LifeBarPanel" type="Panel" parent="Control"]
 layout_mode = 1
@@ -54,6 +62,7 @@ anchor_right = 1.0
 offset_left = -200.0
 offset_bottom = 40.0
 grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Battery" type="ProgressBar" parent="Control/LifeBarPanel"]
 layout_direction = 2
@@ -72,3 +81,4 @@ grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_frnmx")
 step = 0.001
 value = 100.0
+metadata/_edit_use_anchors_ = true
