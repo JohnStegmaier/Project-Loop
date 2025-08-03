@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bab8q3lwp3q54"]
+[gd_scene load_steps=22 format=4 uid="uid://bab8q3lwp3q54"]
 
 [ext_resource type="Script" uid="uid://chp8mjweukfg7" path="res://Scripts/spawn.gd" id="1_4nwsb"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_t5m8g"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="13_5tcfi"]
 [ext_resource type="PackedScene" uid="uid://ddec6m135vs08" path="res://Scenes/Scene Assets/Interactable.tscn" id="14_wvwyh"]
 [ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="15_glk42"]
+[ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="17_6wmlu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5v5r"]
 size = Vector2(1.77364, 26.2927)
@@ -221,6 +222,9 @@ position = Vector2(-29, -74)
 
 [node name="Spawn" parent="Doors/Door_To_04_reverse_transition_level" index="1"]
 position = Vector2(25, -74)
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_6wmlu")]
+visible = false
 
 [editable path="Doors/Door_To_start_zone"]
 [editable path="Doors/Door_To_04_reverse_transition_level"]

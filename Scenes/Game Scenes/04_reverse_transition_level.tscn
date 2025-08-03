@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://b37ksb7rorgdh"]
+[gd_scene load_steps=41 format=4 uid="uid://b37ksb7rorgdh"]
 
 [ext_resource type="Script" uid="uid://cinpy6wt0whwj" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="2_nwgn1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://jqlyi84lpwbt" path="res://Assets/2D Assets/1_Industrial_Tileset_1C.png" id="13_nwgn1"]
 [ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="14_2g57p"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="14_ttmyq"]
+[ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="15_nwgn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpqr"]
 size = Vector2(3.24003, 26.5251)
@@ -560,9 +561,6 @@ position = Vector2(5, 0)
 shape = SubResource("CapsuleShape2D_gttaq")
 debug_color = Color(0.940648, 0.168652, 0.449195, 0.42)
 
-[node name="PauseMenu" parent="." instance=ExtResource("14_2g57p")]
-visible = false
-
 [node name="Moving Platform" type="Path2D" parent="."]
 position = Vector2(2798, 631)
 curve = SubResource("Curve2D_xgayh")
@@ -1041,6 +1039,11 @@ position = Vector2(-44, -67)
 
 [node name="Spawn" parent="Doors/Door_To_Spawn" index="1"]
 position = Vector2(9, -78)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("15_nwgn1")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_2g57p")]
+visible = false
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
 

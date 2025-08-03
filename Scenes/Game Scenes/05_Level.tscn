@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://der8q1x4yqnl"]
+[gd_scene load_steps=16 format=4 uid="uid://der8q1x4yqnl"]
 
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_b07y5"]
 [ext_resource type="Script" uid="uid://csmfqohp8a07r" path="res://Scripts/05_level.gd" id="1_dnd87"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://c3l0v8hb8wswj" path="res://Scripts/Bolt.gd" id="8_qc23t"]
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="9_dnd87"]
 [ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="10_qanff"]
+[ext_resource type="PackedScene" uid="uid://cl4y8xdjw1w2y" path="res://Scenes/Scene Assets/User Interface.tscn" id="12_qanff"]
+[ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="13_lwu51"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lwu51"]
 viewport_path = NodePath("Stage/3D Bolt Texture")
@@ -276,6 +278,11 @@ position = Vector2(-201, -2)
 
 [node name="Spawn" parent="Doors/Door_To_04_reverse_transition_level" index="1"]
 position = Vector2(-169, -2)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("12_qanff")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_lwu51")]
+visible = false
 
 [editable path="Doors/Door_To_start_zone"]
 [editable path="Doors/Door_To_04_reverse_transition_level"]
