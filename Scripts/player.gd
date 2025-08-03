@@ -176,8 +176,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = sign(velocity.x) * SLIDE_SPEED  # Keep constant speed during slide
 		if slide_timer <= 0:
 			#FRICTION_GROUND = 0.5
-			set_player_velocity_with_ground_friction()
+			#set_player_velocity_with_ground_friction()
 			is_sliding = false
+			velocity.x = sign(direction_vector) * MOVE_SPEED
+			print("speed reset")
 
 
 	if is_on_floor():
@@ -323,3 +325,14 @@ func get_active_projectile_count() -> int:
 		if child is BlasterShot:
 			count += 1
 	return count
+
+#print every second
+var time_accumulator := 0.0
+
+func _process(delta):
+	time_accumulator += delta
+	if time_accumulator >= 0.1:
+		print("x: %s",velocity.x)
+		print("y: %s",velocity.y)
+		time_accumulator = 0.0
+		
