@@ -1,6 +1,6 @@
-[gd_scene load_steps=38 format=4 uid="uid://dftuvp5d7r1up"]
+[gd_scene load_steps=38 format=4 uid="uid://b37ksb7rorgdh"]
 
-[ext_resource type="Script" uid="uid://cinpy6wt0whwj" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
+[ext_resource type="Script" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="2_nwgn1"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="3_xgayh"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="4_a4pq8"]
@@ -26,7 +26,7 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4pq8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7y5f"]
 texture = ExtResource("11_b7y5f")
 0:0/0 = 0
 1:0/0 = 0
@@ -125,7 +125,7 @@ texture = ExtResource("11_b7y5f")
 10:7/0 = 0
 11:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1214t"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ttmyq"]
 texture = ExtResource("12_ttmyq")
 0:0/0 = 0
 1:0/0 = 0
@@ -224,7 +224,7 @@ texture = ExtResource("12_ttmyq")
 10:7/0 = 0
 11:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rhynx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwgn1"]
 texture = ExtResource("13_nwgn1")
 0:0/0 = 0
 1:0/0 = 0
@@ -264,9 +264,9 @@ texture = ExtResource("13_nwgn1")
 5:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_s1eqr"]
-sources/0 = SubResource("TileSetAtlasSource_a4pq8")
-sources/1 = SubResource("TileSetAtlasSource_1214t")
-sources/2 = SubResource("TileSetAtlasSource_rhynx")
+sources/0 = SubResource("TileSetAtlasSource_b7y5f")
+sources/1 = SubResource("TileSetAtlasSource_ttmyq")
+sources/2 = SubResource("TileSetAtlasSource_nwgn1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1e7y"]
 size = Vector2(96.0001, 32)
