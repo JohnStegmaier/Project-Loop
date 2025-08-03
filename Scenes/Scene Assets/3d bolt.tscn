@@ -62,7 +62,7 @@ _data = {
 [node name="Bolt" type="Node3D"]
 
 [node name="Cylinder_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.196649, 0.359627, -0.949366, -0.21124, 1.40337, 0.203003, 0.957448, 0.235759, 0.239777, -0.00763655, 1.21833, 0.000567436)
+transform = Transform3D(0.976453, 0.316645, 7.61822e-07, -0.21124, 1.40337, 0.203004, 0.0437936, -0.290948, 0.979177, -0.00763655, 1.21833, 0.000567436)
 mesh = SubResource("ArrayMesh_gbuld")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_q8vuo")

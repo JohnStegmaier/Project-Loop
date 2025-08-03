@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var BlasterShot: PackedScene
 
 const MOVE_SPEED = 155
-const JUMP_FORCE = 700
+const JUMP_FORCE = 650
 const MAX_SPEED = 2000
-const MAX_FALL_SPEED = 700
+const MAX_FALL_SPEED = 500
 
 const DEBUG_OBJECT = false
 const SLIDE_SPEED = 500
@@ -42,6 +42,8 @@ var is_crouching: bool = false
 const DASH_SPEED = 1400
 const DASH_DURATION = 0.08
 const DASH_COOLDOWN = 0.5
+
+
 
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
@@ -133,6 +135,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Dash input check
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
+
 		is_dashing = true
 		dash_timer = DASH_DURATION
 		dash_cooldown_timer = DASH_COOLDOWN
