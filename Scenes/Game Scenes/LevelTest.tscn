@@ -1926,7 +1926,6 @@ shape = SubResource("RectangleShape2D_jirwo")
 [node name="Destructible Pillar" type="Area2D" parent="."]
 position = Vector2(181, 693)
 script = ExtResource("15_g414q")
-hit_damage = 10
 
 [node name="Pillar Sprite" type="Sprite2D" parent="Destructible Pillar"]
 scale = Vector2(2.15343, 2.15343)

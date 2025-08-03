@@ -27,7 +27,10 @@ var FRICTION_GROUND = 0.5
 var FRICTION_AIR = 0.6
 var FRICTION_AIR_X = FRICTION_AIR
 var GRAVITY_X = GRAVITY
-		
+
+enum Direction { LEFT, RIGHT}
+var direction_last_moved: Direction
+
 var direction_vector : float
 var direction_vector_buffer : float
 var jump_available : bool
@@ -74,6 +77,7 @@ func _ready() -> void:
 	jump_buffer = false
 	direction_vector = 0
 	direction_vector_buffer = 0
+	direction_last_moved = Direction.RIGHT
 
 func _on_spawn(position: Vector2, direction: String):
 	var camera : Camera2D = get_node("Camera2D") # Adjust path if your camera has a different name
@@ -124,21 +128,23 @@ func _physics_process(delta: float) -> void:
 		direction_vector = 0
 	else:
 		direction_vector = direction_based_on_input()
+		update_last_moved_direction(direction_vector)
 		debug_log_movement()
 		apply_gravity_to_player()
 		clamp_player_velocity()
 	
 	# Dash input check
 	if Input.is_action_just_pressed("dash") and dash_cooldown_timer <= 0 and not is_dashing:
-		if direction_vector != 0:
-			
-			
-			is_dashing = true
-			dash_timer = DASH_DURATION
-			dash_cooldown_timer = DASH_COOLDOWN
-			dash_direction = sign(direction_vector)
-			velocity = Vector2(dash_direction * DASH_SPEED, 0)
-			velocity.y = 0  # Optional: cancel vertical movement during dash
+
+		is_dashing = true
+		dash_timer = DASH_DURATION
+		dash_cooldown_timer = DASH_COOLDOWN
+		if(direction_last_moved == Direction.LEFT):
+			dash_direction = -1
+		elif(direction_last_moved == Direction.RIGHT):
+			dash_direction = 1	
+		velocity = Vector2(dash_direction * DASH_SPEED, 0)
+		velocity.y = 0  # Optional: cancel vertical movement during dash
 
 	# Dash active
 	if is_dashing:
@@ -239,6 +245,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 ######################################################## Physics Processing Loop ######################################################## 
 	
+func update_last_moved_direction(direction_based_on_input : float) -> void:
+	if(direction_based_on_input > 1):
+		direction_last_moved = Direction.RIGHT
+	elif(direction_based_on_input < -1):
+		direction_last_moved = Direction.LEFT
+	
+	Logger.log_debug("Last moved direction: %s" % direction_last_moved, DEBUG_OBJECT)
+	
+	pass
 
 func _input(event: InputEvent) -> void:
 	if(event.is_action_released("jump")):

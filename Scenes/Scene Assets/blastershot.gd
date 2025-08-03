@@ -10,7 +10,7 @@ var sprite : AnimatedSprite2D
 var no_longer_on_screen : VisibleOnScreenNotifier2D
 var explosion : GPUParticles2D
 var collision_shape: CollisionShape2D
-var _charge_ratio
+var _charge_ratio = 0
 var Destructable_Object : Area2D
 
 static var active_projectile_count := 0
@@ -60,7 +60,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if(body.get_parent().get_parent().is_class("Area2D")
 		&& body.get_parent().get_parent().has_method("take_hit")):
 			Destructable_Object = body.get_parent().get_parent()
-			Destructable_Object.take_hit()
+			Destructable_Object.take_hit(_charge_ratio)
 		speed = 0
 		set_process(false)
 		if collision_shape:
