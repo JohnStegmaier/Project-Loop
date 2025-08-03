@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var Coyote_Time: float
 @export var BlasterShot: PackedScene
 
-const MOVE_SPEED = 155
-const JUMP_FORCE = 650
+const MOVE_SPEED = 120
+const JUMP_FORCE = 630
 const MAX_SPEED = 2000
 const MAX_FALL_SPEED = 500
 
@@ -39,8 +39,8 @@ var jump_buffer : bool
 var is_crouching: bool = false
 
 # Dash variables
-const DASH_SPEED = 1400
-const DASH_DURATION = 0.08
+const DASH_SPEED = 1600
+const DASH_DURATION = 0.1
 const DASH_COOLDOWN = 0.5
 
 
