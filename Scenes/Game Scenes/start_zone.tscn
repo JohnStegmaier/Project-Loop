@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=4 uid="uid://dtwmjj6275yds"]
+[gd_scene load_steps=31 format=4 uid="uid://dtwmjj6275yds"]
 
+[ext_resource type="Script" uid="uid://c7c4mejk8vwbh" path="res://Scripts/start_zone.gd" id="1_do66n"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="1_x3j2f"]
 [ext_resource type="PackedScene" uid="uid://cixx5dbanxem1" path="res://Scenes/Scene Assets/blastershot.tscn" id="2_bowi5"]
 [ext_resource type="SpriteFrames" uid="uid://ddm0765k3wlil" path="res://Assets/2D Assets/SpriteFrames/Player_sprite_frames.tres" id="3_fwnnh"]
@@ -393,6 +394,7 @@ _data = {
 }
 
 [node name="StartZone" type="Node2D"]
+script = ExtResource("1_do66n")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(41, 407)
@@ -890,18 +892,20 @@ libraries = {
 autoplay = "Piston Animation"
 speed_scale = 1.18
 
-[node name="Door_To_TestScene" parent="." instance=ExtResource("10_qokbd")]
+[node name="Doors" type="Node" parent="."]
+
+[node name="Door_To_Spawn" parent="Doors" instance=ExtResource("10_qokbd")]
 position = Vector2(5, 377)
-destination_level_tag = "02_first_level"
-destination_door_tag = "To_Scene_1"
+destination_level_tag = "Spawn"
+destination_door_tag = "To_start_zone"
 spawn_direction = "left"
 
-[node name="CollisionShape2D" parent="Door_To_TestScene" index="0"]
+[node name="CollisionShape2D" parent="Doors/Door_To_Spawn" index="0"]
 position = Vector2(57, -62)
 
-[node name="Spawn" parent="Door_To_TestScene" index="1"]
+[node name="Spawn" parent="Doors/Door_To_Spawn" index="1"]
 position = Vector2(58, -24)
 
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
 
-[editable path="Door_To_TestScene"]
+[editable path="Doors/Door_To_Spawn"]

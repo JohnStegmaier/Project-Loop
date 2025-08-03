@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://b37ksb7rorgdh"]
+[gd_scene load_steps=40 format=4 uid="uid://b37ksb7rorgdh"]
 
 [ext_resource type="Script" uid="uid://cinpy6wt0whwj" path="res://Scripts/04_reverse_transition_level.gd" id="1_ttmyq"]
 [ext_resource type="Script" uid="uid://mtv4jj62dn53" path="res://Scripts/player.gd" id="2_nwgn1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bcxi0ij5k1yn" path="res://Scenes/Scene Assets/3d bolt.tscn" id="13_2g5mc"]
 [ext_resource type="Texture2D" uid="uid://jqlyi84lpwbt" path="res://Assets/2D Assets/1_Industrial_Tileset_1C.png" id="13_nwgn1"]
 [ext_resource type="PackedScene" uid="uid://u7xlfve1uxrm" path="res://Scenes/Game Scenes/pause_menu.tscn" id="14_2g57p"]
+[ext_resource type="PackedScene" uid="uid://cx0k1lcljgqis" path="res://Scenes/Scene Assets/door.tscn" id="14_ttmyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjpqr"]
 size = Vector2(3.24003, 26.5251)
@@ -1015,4 +1016,18 @@ libraries = {
 }
 autoplay = "04_First_Sliding_Ground"
 
+[node name="Door_To_TestScene" parent="." instance=ExtResource("14_ttmyq")]
+position = Vector2(4088, 582)
+destination_level_tag = "02_first_level"
+destination_door_tag = "To_Scene_1"
+spawn_direction = "left"
+
+[node name="CollisionShape2D" parent="Door_To_TestScene" index="0"]
+position = Vector2(64, -62)
+
+[node name="Spawn" parent="Door_To_TestScene" index="1"]
+position = Vector2(2, -65)
+
 [connection signal="body_entered" from="DeathZone" to="Player" method="_on_death_zone_body_entered"]
+
+[editable path="Door_To_TestScene"]
