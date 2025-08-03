@@ -176,8 +176,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = sign(velocity.x) * SLIDE_SPEED  # Keep constant speed during slide
 		if slide_timer <= 0:
 			#FRICTION_GROUND = 0.5
-			set_player_velocity_with_ground_friction()
+			#set_player_velocity_with_ground_friction()
 			is_sliding = false
+			velocity.x = sign(direction_vector) * MOVE_SPEED
+			print("speed reset")
 
 
 	if is_on_floor():
@@ -296,7 +298,6 @@ func jump() -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	jump_available = false
-	velocity.y += GRAVITY
 
 func cut_jump_short () -> void:
 	velocity.y += timer.time_left * JUMP_CUT_MULTIPLIER
