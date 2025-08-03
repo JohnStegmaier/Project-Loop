@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rp6u6ygkr18u"]
 
-[ext_resource type="Script" uid="uid://bnegd28ookd3s" path="res://Scenes/Game Scenes/turret.gd" id="1_ybujg"]
+[ext_resource type="Script" path="res://Scenes/Game Scenes/turret.gd" id="1_ybujg"]
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_ybujg")
