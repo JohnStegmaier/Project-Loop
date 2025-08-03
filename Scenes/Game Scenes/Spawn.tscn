@@ -148,7 +148,8 @@ tile_set = ExtResource("4_qjkgr")
 position = Vector2(2814, 388)
 scale = Vector2(1.62069, 1.62069)
 script = ExtResource("9_l2ouu")
-hit_damage = 10
+hit_damage = 10.0
+health = 50.0
 
 [node name="Pillar Sprite" type="Sprite2D" parent="Destructible Pillar"]
 scale = Vector2(2.15343, 2.15343)

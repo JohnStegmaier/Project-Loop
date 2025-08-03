@@ -43,8 +43,6 @@ const DASH_SPEED = 1600
 const DASH_DURATION = 0.1
 const DASH_COOLDOWN = 0.5
 
-
-
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var is_dashing: bool = false
