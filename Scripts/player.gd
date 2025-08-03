@@ -324,14 +324,3 @@ func get_active_projectile_count() -> int:
 		if child is BlasterShot:
 			count += 1
 	return count
-
-#print every second
-var time_accumulator := 0.0
-
-func _process(delta):
-	time_accumulator += delta
-	if time_accumulator >= 0.01 and (GRAVITY != 30):
-		#print("x: %s",velocity.x)
-		print(GRAVITY)
-		time_accumulator = 0.0
-		
