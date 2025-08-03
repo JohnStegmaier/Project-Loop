@@ -28,6 +28,7 @@ var FRICTION_GROUND = 0.5
 var FRICTION_AIR = 0.6
 var FRICTION_AIR_X = FRICTION_AIR
 var GRAVITY_X = GRAVITY
+var actual_jump_force : float
 
 enum Direction { LEFT, RIGHT}
 var direction_last_moved: Direction
@@ -36,6 +37,7 @@ var direction_vector : float
 var direction_vector_buffer : float
 var jump_available : bool
 var jump_buffer : bool
+
 
 var is_crouching: bool = false
 
@@ -228,7 +230,6 @@ func _physics_process(delta: float) -> void:
 			#set_player_velocity_with_ground_friction()
 			is_sliding = false
 			velocity.x = sign(direction_vector) * MOVE_SPEED
-			print("speed reset")
 
 
 	if is_on_floor():
@@ -278,7 +279,6 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		if is_sliding:
-			is_sliding = false
 			jump_available = false
 			jump()
 		elif is_crouching:
@@ -338,9 +338,10 @@ func jump() -> void:
 	timer = get_tree().create_timer(2)
 	if sprite:
 		sprite.play("jumping")
-	var actual_jump_force = JUMP_FORCE
+	actual_jump_force = JUMP_FORCE
 	if is_sliding:
-		actual_jump_force *= 1.8
+		print("slidejump")
+		actual_jump_force *= 1.1
 		velocity.y = -actual_jump_force
 	else:
 		velocity.y = -JUMP_FORCE
